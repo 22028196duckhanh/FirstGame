@@ -18,7 +18,6 @@ private:
 	int m_creepNum;
 	void SpawnGround();
 	void SpawnSky();
-	int m_CreepNum;
 	float m_TimeSpawnCreep;
 	float m_currentTime;
 };

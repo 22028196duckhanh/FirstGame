@@ -3,28 +3,32 @@ std::map<std::string, std::string> m_mapTexture;
 std::map<std::string, std::string> m_mapSound;
 
 void InitResoucre() {
-	m_mapTexture["layer9"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer9.png";
-	m_mapTexture["layer8"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer8.png";
-	m_mapTexture["layer7"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer7.png";
-	m_mapTexture["layer6"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer6.png";
-	m_mapTexture["layer5"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer5.png";
-	m_mapTexture["layer4"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer4.png";
-	m_mapTexture["layer3"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer3.png";
-	m_mapTexture["layer2"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer2.png";
-	m_mapTexture["layer1"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//layer1.png";
-	m_mapTexture["Run"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//Run.png";
-	m_mapTexture["Jump"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//Jump.png";
-	m_mapTexture["Fall"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//Fall.png";
-	m_mapTexture["Death"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//Death.png";
-	m_mapTexture["Attack"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//Attack.png";
-    m_mapTexture["RinoRun"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//RinoRun.png";
-    m_mapTexture["RinoHit"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//RinoHit.png";
-    m_mapTexture["BatFly"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//BatFly.png";
-    m_mapTexture["BatHit"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//BatHit.png";
-    m_mapTexture["GoblinRun"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//GoblinRun.png";
-    m_mapTexture["SkeletonWalk"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//SkeletonWalk.png";
-    m_mapTexture["GoblinDeath"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//GoblinDeath.png";
-    m_mapTexture["SkeletonDeath"] = "C://GAME_PROJECT//NINJA ADVENTURE//DataGame//Textures//SkeletonDeath.png";
+	m_mapTexture["layer9"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer9.png";
+	m_mapTexture["layer8"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer8.png";
+	m_mapTexture["layer7"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer7.png";
+	m_mapTexture["layer6"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer6.png";
+	m_mapTexture["layer5"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer5.png";
+	m_mapTexture["layer4"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer4.png";
+	m_mapTexture["layer3"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer3.png";
+	m_mapTexture["layer2"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer2.png";
+	m_mapTexture["layer1"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer1.png";
+	m_mapTexture["Run"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Run.png";
+	m_mapTexture["Jump"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Jump.png";
+	m_mapTexture["Fall"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Fall.png";
+	m_mapTexture["Death"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Death.png";
+	m_mapTexture["Attack"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Attack.png";
+    m_mapTexture["RinoRun"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//RinoRun.png";
+    m_mapTexture["RinoHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//RinoHit.png";
+    m_mapTexture["BatFly"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//BatFly.png";
+    m_mapTexture["BatHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//BatHit.png";
+    m_mapTexture["GoblinRun"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//GoblinRun.png";
+    m_mapTexture["SkeletonWalk"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//SkeletonWalk.png";
+    m_mapTexture["GoblinDeath"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//GoblinDeath.png";
+    m_mapTexture["SkeletonDeath"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//SkeletonDeath.png";
+    m_mapTexture["EyesFly"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//EyesFly.png";
+    m_mapTexture["EyesHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//EyesHit.png";
+    m_mapTexture["PurpleFly"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//PurpleFly.png";
+    m_mapTexture["PurpleHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//PurpleHit.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;
@@ -69,73 +73,50 @@ bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
     int botB = object2.y + object2.h;
 
         // Case 1: size object 1 < size object 2
-        if (leftA > leftB && leftA < rightB)
+        if (leftA > leftB && leftA < rightB && topA > topB && topA < botB)
         {
-            if (topA > topB && topA < botB)
-            {
                 return true;
-            }
         }
 
-        if (leftA > leftB && leftA < rightB)
+        if (leftA > leftB && leftA < rightB && botA > topB && botA < botB)
         {
-            if (botA > topB && botA < botB)
-            {
                 return true;
-            }
         }
 
-        if (rightA > leftB && rightA < rightB)
+        if (rightA > leftB && rightA < rightB&& topA > topB && topA < botB)
         {
-            if (topA > topB && topA < botB)
-            {
                 return true;
-            }
         }
 
-        if (rightA > leftB && rightA < rightB)
+        if (rightA > leftB && rightA < rightB && botA > topB && botA < botB)
         {
-            if (botA > topB && botA < botB)
-            {
                 return true;
-            }
         }
 
         // Case 2: size object 1 < size object 2
-        if (leftB > leftA && leftB < rightA)
+        if (leftB > leftA && leftB < rightA && topB > topA && topB < botA)
         {
-            if (topB > topA && topB < botA)
-            {
                 return true;
-            }
         }
 
-        if (leftB > leftA && leftB < rightA)
+        if (leftB > leftA && leftB < rightA && botB > topA && botB < botA)
         {
-            if (botB > topA && botB < botA)
-            {
                 return true;
-            }
         }
 
-        if (rightB > leftA && rightB < rightA)
+        if (rightB > leftA && rightB < rightA&& topB > topA && topB < botA)
         {
-            if (topB > topA && topB < botA)
-            {
                 return true;
-            }
+
         }
 
-        if (rightB > leftA && rightB < rightA)
+        if (rightB > leftA && rightB < rightA&& botB > topA && botB < botA)
         {
-            if (botB > topA && botB < botA)
-            {
-                return true;
-            }
+                return true;         
         }
 
         // Case 3: size object 1 = size object 2
-        if (topA == topB && rightA == rightB && botA == botB)
+        if (topA == topB && rightA == rightB && botA == botB &&leftA==leftB)
         {
             return true;
         }

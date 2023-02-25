@@ -72,7 +72,7 @@ void Creep::renderCreep(SDL_Renderer* &screen)
 {
 	if (m_stop) return;
 	m_curAni->renderAni(screen, m_rect);
-	SDL_RenderDrawRect(screen,&m_hitBox->box);
+	//SDL_RenderDrawRect(screen,&m_hitBox->box);
 }
 
 void Creep::reset()

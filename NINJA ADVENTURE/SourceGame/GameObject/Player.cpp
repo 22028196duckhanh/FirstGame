@@ -53,6 +53,7 @@ void Player::InputAction()
 {
     const Uint8* keystates = SDL_GetKeyboardState(NULL);
     velo.x = 0.f;
+    if (keystates[SDL_SCANCODE_R]) { m_hitBox->isAlive = true; ChangeStatus(RUN); }
     if (m_hitBox->isAlive != false) {
         if (keystates[SDL_SCANCODE_RIGHT]) { velo.x += move.x; }
         if (keystates[SDL_SCANCODE_LEFT]) { velo.x -= move.x; }
@@ -126,5 +127,5 @@ void Player::renderPlayer(SDL_Renderer* &screen)
 {
     if (m_curStatus == ATTACK) { useSkill = false; skillAvailable = false; }
     m_action[m_curStatus]->renderAni(screen, m_rect);
-    SDL_RenderDrawRect(screen, &m_hitBox->box);
+    //SDL_RenderDrawRect(screen, &m_hitBox->box);
 }
