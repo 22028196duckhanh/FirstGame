@@ -22,7 +22,35 @@ void Collision::Update()
 			if (a->tag == PLAYER && b->tag == CREEP) {
 				a->isAlive = false;
 				b->isAlive = false;
+				a->lives -= 1;
 			}
+			if (a->tag == PLAYER && b->tag == BOSS) {
+				if (a->haveProtect == true) continue;
+				a->isAlive = false;
+				a->lives -= 2;
+				if (a->lives < 0) a->lives = 0;
+			}
+			/*if (a->tag == CREEP && b->tag == BOSS) {
+				a->isAlive = false;
+			}*/
+			if (a->tag == PLAYER && b->tag == BOSS_BULLET) {
+				a->isAlive = false;
+				b->isAlive = false;
+				a->lives -= 2;
+				if (a->lives < 0) a->lives = 0;
+			}
+			if (a->tag == PLAYERSKILL && (b->tag == CREEP || b->tag == BOSS_BULLET))
+			{
+				a->isAlive = false;
+				b->isAlive = false;
+			}
+			if (a->tag == PROTECT && (b->tag == CREEP || b->tag == BOSS_BULLET)) {
+				b->isAlive = false;
+			}
+			/*if (a->tag == CREEP && b->tag == BOSS_BULLET) {
+				a->isAlive = false;
+				b->isAlive = false;
+			}*/
 		}
 	}
 }

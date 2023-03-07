@@ -7,5 +7,6 @@ public:
 	bool isAlive;
 	SDL_Rect box;
 	int tag;
-	
+	int lives;
+	bool haveProtect;
 };

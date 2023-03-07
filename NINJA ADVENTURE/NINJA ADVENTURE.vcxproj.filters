@@ -51,6 +51,21 @@
     <ClCompile Include="SourceGame\GameObject\CreepSpawn.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="SourceGame\GameObject\Boss1.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceGame\GameObject\Bullet.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceGame\GameObject\BulletSpawn.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceGame\GameObject\Boss2.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceGame\GameObject\Text.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceGame\GameManager\ResourceManager.h">
@@ -78,6 +93,21 @@
       <Filter>Source Files\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="SourceGame\GameObject\CreepSpawn.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameObject\Boss1.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameObject\Bullet.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameObject\BulletSpawn.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameObject\Boss2.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameObject\Text.h">
       <Filter>Source Files\GameObject</Filter>
     </ClInclude>
   </ItemGroup>

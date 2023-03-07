@@ -3,32 +3,63 @@ std::map<std::string, std::string> m_mapTexture;
 std::map<std::string, std::string> m_mapSound;
 
 void InitResoucre() {
-	m_mapTexture["layer9"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer9.png";
-	m_mapTexture["layer8"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer8.png";
-	m_mapTexture["layer7"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer7.png";
-	m_mapTexture["layer6"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer6.png";
-	m_mapTexture["layer5"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer5.png";
-	m_mapTexture["layer4"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer4.png";
-	m_mapTexture["layer3"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer3.png";
-	m_mapTexture["layer2"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer2.png";
-	m_mapTexture["layer1"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//layer1.png";
-	m_mapTexture["Run"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Run.png";
-	m_mapTexture["Jump"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Jump.png";
-	m_mapTexture["Fall"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Fall.png";
-	m_mapTexture["Death"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Death.png";
-	m_mapTexture["Attack"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//Attack.png";
-    m_mapTexture["RinoRun"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//RinoRun.png";
-    m_mapTexture["RinoHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//RinoHit.png";
-    m_mapTexture["BatFly"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//BatFly.png";
-    m_mapTexture["BatHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//BatHit.png";
-    m_mapTexture["GoblinRun"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//GoblinRun.png";
-    m_mapTexture["SkeletonWalk"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//SkeletonWalk.png";
-    m_mapTexture["GoblinDeath"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//GoblinDeath.png";
-    m_mapTexture["SkeletonDeath"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//SkeletonDeath.png";
-    m_mapTexture["EyesFly"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//EyesFly.png";
-    m_mapTexture["EyesHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//EyesHit.png";
-    m_mapTexture["PurpleFly"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//PurpleFly.png";
-    m_mapTexture["PurpleHit"] = "C://GAME_PROJECT//FirstGame//NINJA ADVENTURE//DataGame//Textures//PurpleHit.png";
+	m_mapTexture["layer9"] = "DataGame//Textures//layer9.png";
+	m_mapTexture["layer8"] = "DataGame//Textures//layer8.png";
+	m_mapTexture["layer7"] = "DataGame//Textures//layer7.png";
+	m_mapTexture["layer6"] = "DataGame//Textures//layer6.png";
+	m_mapTexture["layer5"] = "DataGame//Textures//layer5.png";
+	m_mapTexture["layer4"] = "DataGame//Textures//layer4.png";
+	m_mapTexture["layer3"] = "DataGame//Textures//layer3.png";
+	m_mapTexture["layer2"] = "DataGame//Textures//layer2.png";
+	m_mapTexture["layer1"] = "DataGame//Textures//layer1.png";
+	m_mapTexture["Run"] = "DataGame//Textures//Run.png";
+	m_mapTexture["Jump"] = "DataGame//Textures//Jump.png";
+	m_mapTexture["Fall"] = "DataGame//Textures//Fall.png";
+	m_mapTexture["Death"] = "DataGame//Textures//Death.png";
+	m_mapTexture["Attack"] = "DataGame//Textures//Attack.png";
+    m_mapTexture["RinoRun"] = "DataGame//Textures//RinoRun.png";
+    m_mapTexture["RinoHit"] = "DataGame//Textures//RinoHit.png";
+    m_mapTexture["BatFly"] = "DataGame//Textures//BatFly.png";
+    m_mapTexture["BatHit"] = "DataGame//Textures//BatHit.png";
+    m_mapTexture["GoblinRun"] = "DataGame//Textures//GoblinRun.png";
+    m_mapTexture["SkeletonWalk"] = "DataGame//Textures//SkeletonWalk.png";
+    m_mapTexture["GoblinDeath"] = "DataGame//Textures//GoblinDeath.png";
+    m_mapTexture["SkeletonDeath"] = "DataGame//Textures//SkeletonDeath.png";
+    m_mapTexture["EyesFly"] = "DataGame//Textures//EyesFly.png";
+    m_mapTexture["EyesHit"] = "DataGame//Textures//EyesHit.png";
+    m_mapTexture["PurpleFly"] = "DataGame//Textures//PurpleFly.png";
+    m_mapTexture["PurpleHit"] = "DataGame//Textures//PurpleHit.png";
+    m_mapTexture["BossBite"] = "DataGame//Textures//BossBite.png";
+    m_mapTexture["BossJump"] = "DataGame//Textures//BossJump.png";
+    m_mapTexture["BossSkill"] = "DataGame//Textures//BossSkill.png";
+    m_mapTexture["Bullet"] = "DataGame//Textures//Bullet.png";
+    m_mapTexture["BulletImpact"] = "DataGame//Textures//BulletImpact.png";
+    m_mapTexture["FireBall"] = "DataGame//Textures//FireBall.png";
+    m_mapTexture["FireBallImpact"] = "DataGame//Textures//FireBallImpact.png";
+    m_mapTexture["WaterBall"] = "DataGame//Textures//WaterBall2.png";
+    m_mapTexture["WaterBallImpact"] = "DataGame//Textures//WaterBallImpact.png";
+    m_mapTexture["Wind"] = "DataGame//Textures//Wind.png";
+    m_mapTexture["WindImpact"] = "DataGame//Textures//WindImpact.png";
+    m_mapTexture["Thunder"] = "DataGame//Textures//Thunder.png";
+    m_mapTexture["ThunderImpact"] = "DataGame//Textures//ThunderImpact.png";
+    m_mapTexture["WaterTornadoImpact"] = "DataGame//Textures//WaterTornadoImpact.png";
+    m_mapTexture["WaterTornado"] = "DataGame//Textures//WaterTornado.png";
+    m_mapTexture["SkillAvailable"] = "DataGame//Textures//SkillAvailable.png";
+    m_mapTexture["SkillCooldown"] = "DataGame//Textures//SkillCooldown.png";
+    m_mapTexture["Health0"] = "DataGame//Textures//Health0.png";
+    m_mapTexture["Health1"] = "DataGame//Textures//Health1.png";
+    m_mapTexture["Health2"] = "DataGame//Textures//Health2.png";
+    m_mapTexture["Health3"] = "DataGame//Textures//Health3.png";
+    m_mapTexture["Health4"] = "DataGame//Textures//Health4.png";
+    m_mapTexture["Health5"] = "DataGame//Textures//Health5.png";
+    m_mapTexture["Health6"] = "DataGame//Textures//Health6.png";
+    m_mapTexture["EnergyCircle"] = "DataGame//Textures//EnergyCircle.png";
+    m_mapTexture["bossnhen1"] = "DataGame//Textures//bossnhen1.png";
+    m_mapTexture["bossnhen2"] = "DataGame//Textures//bossnhen2.png";
+    m_mapTexture["Boss2Skill"] = "DataGame//Textures//Boss2Skill.png";
+    m_mapTexture["Boss2SkillImpact"] = "DataGame//Textures//Boss2SkillImpact.png";
+
+
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;
@@ -50,6 +81,22 @@ bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
         std::cout << "Init image failed. Error: " << SDL_GetError() << std::endl;
         success = 0;
     }
+    if (SDL_Init(SDL_INIT_AUDIO) < 0)
+    {
+        std::cout << "Init audio failed. Error: " << SDL_GetError() << std::endl;
+        success = 0;
+    }
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    {
+        std::cout << "Init audio failed. Error: " << SDL_GetError() << std::endl;
+        success = 0;
+    }
+    if (TTF_Init() == -1)
+    {
+        std::cout << "Init font failed. Error: " << SDL_GetError() << std::endl;
+        success = 0;
+    }
+    srand(time(0));
     return success;
 }
 void close(SDL_Window*& window, SDL_Renderer*& screen) {
@@ -72,7 +119,7 @@ bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
     int topB = object2.y;
     int botB = object2.y + object2.h;
 
-        // Case 1: size object 1 < size object 2
+        //xet A
         if (leftA > leftB && leftA < rightB && topA > topB && topA < botB)
         {
                 return true;
@@ -93,7 +140,7 @@ bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
                 return true;
         }
 
-        // Case 2: size object 1 < size object 2
+        //xet B
         if (leftB > leftA && leftB < rightA && topB > topA && topB < botA)
         {
                 return true;
@@ -115,7 +162,7 @@ bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
                 return true;         
         }
 
-        // Case 3: size object 1 = size object 2
+        //size A = size B
         if (topA == topB && rightA == rightB && botA == botB &&leftA==leftB)
         {
             return true;

@@ -134,23 +134,33 @@
     <ClCompile Include="SourceGame\GameManager\CollisionManager.cpp" />
     <ClCompile Include="SourceGame\GameManager\ResourceManager.cpp" />
     <ClCompile Include="SourceGame\GameObject\Animation.cpp" />
+    <ClCompile Include="SourceGame\GameObject\Boss1.cpp" />
+    <ClCompile Include="SourceGame\GameObject\Boss2.cpp" />
+    <ClCompile Include="SourceGame\GameObject\Bullet.cpp" />
+    <ClCompile Include="SourceGame\GameObject\BulletSpawn.cpp" />
     <ClCompile Include="SourceGame\GameObject\Creep.cpp" />
     <ClCompile Include="SourceGame\GameObject\CreepSpawn.cpp" />
     <ClCompile Include="SourceGame\GameObject\HitBox.cpp" />
     <ClCompile Include="SourceGame\GameObject\Layer.cpp" />
     <ClCompile Include="SourceGame\GameObject\ParallaxBackground.cpp" />
     <ClCompile Include="SourceGame\GameObject\Player.cpp" />
+    <ClCompile Include="SourceGame\GameObject\Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceGame\GameManager\CollisionManager.h" />
     <ClInclude Include="SourceGame\GameManager\ResourceManager.h" />
     <ClInclude Include="SourceGame\GameObject\Animation.h" />
+    <ClInclude Include="SourceGame\GameObject\Boss1.h" />
+    <ClInclude Include="SourceGame\GameObject\Boss2.h" />
+    <ClInclude Include="SourceGame\GameObject\Bullet.h" />
+    <ClInclude Include="SourceGame\GameObject\BulletSpawn.h" />
     <ClInclude Include="SourceGame\GameObject\Creep.h" />
     <ClInclude Include="SourceGame\GameObject\CreepSpawn.h" />
     <ClInclude Include="SourceGame\GameObject\HitBox.h" />
     <ClInclude Include="SourceGame\GameObject\Layer.h" />
     <ClInclude Include="SourceGame\GameObject\ParallaxBackground.h" />
     <ClInclude Include="SourceGame\GameObject\Player.h" />
+    <ClInclude Include="SourceGame\GameObject\Text.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -49,9 +49,13 @@ void ParallaxBG::Update()
 	SDL_Delay(10);
 }
 
-void ParallaxBG::RenderBG(SDL_Renderer* screen)
+void ParallaxBG::RenderBG(SDL_Renderer* screen,Boss2 * boss2)
 {
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < 3; i++) {
+		BG[i]->renderLayer(screen);
+	}
+	if (boss2->boss2spawn == true)boss2->renderBoss2(screen);
+	for (int i = 3; i < 9; i++) {
 		BG[i]->renderLayer(screen);
 	}
 }

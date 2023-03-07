@@ -12,7 +12,7 @@ public:
 	void setPos(float x, float y) { pos.x = x; pos.y = y; }
 	void setVelo(float x, float y) { velo.x = x; velo.y = y; }
 	bool isStop() { return m_stop; }
-	void setStop(bool stop) { m_stop = stop; }
+	//void setStop(bool stop) { m_stop = stop; }
 	HitBox* getHitBox() { return m_hitBox; }
 	SDL_Rect getRect() { return m_rect; }
 	void reset();

@@ -27,8 +27,8 @@ void Animation::CalculateSize(int width, int height) {
 void Animation::setClips()
 {
 	for (int i = 0; i < m_Num; i++) {
-		frame_clip[i].x = i * m_rectSize.first;
-		frame_clip[i].y = 0;
+		frame_clip[i].x = (i%m_frameNum.first) * m_rectSize.first;
+		frame_clip[i].y = (i/m_frameNum.first)*m_rectSize.second;
 		frame_clip[i].w = m_rectSize.first;
 		frame_clip[i].h = m_rectSize.second;
 	}
