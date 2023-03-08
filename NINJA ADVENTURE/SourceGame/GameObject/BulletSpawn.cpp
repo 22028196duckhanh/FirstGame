@@ -42,14 +42,14 @@ void BulletManager::Init(Collision& collision, SDL_Renderer* screen)
 	}
 }
 
-void BulletManager::Update(float deltaTime, Player* player, Boss1* boss1,Boss2* boss2)
+void BulletManager::Update(float deltaTime, Player* player, Boss1* boss1,Boss2* boss2,Mix_Chunk* sound[])
 {
 	if (boss1->bulletAvailable==true) {
 		SpawnGround();
 		boss1->bulletAvailable = false;
 	}
 	if (player->useSkill == true) {
-		SpawnPlayerSkill(player);
+		SpawnPlayerSkill(player,sound);
 		player->skillAvailable = false;
 		player->useSkill = false;
 	}
@@ -108,12 +108,13 @@ void BulletManager::SpawnSky(Player*player)
 	bl->reset();
 }
 
-void BulletManager::SpawnPlayerSkill(Player* player)
+void BulletManager::SpawnPlayerSkill(Player* player, Mix_Chunk* sound[])
 {
 	Bullet* bl = NULL;
 	for (int i = rand()%4 +1; i < m_BulletNum; i++) {
 		if (listPlayerSkill[i]->getHitBox()->isAlive == false && listPlayerSkill[i]->isStop() == true) {
 			bl = listPlayerSkill[i];
+			Mix_PlayChannel(-1, sound[i], 0);
 			break;
 		}
 	}

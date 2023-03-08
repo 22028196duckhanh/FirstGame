@@ -14,7 +14,7 @@ class Player
 public:
 	Player();
 	~Player();
-	void Init(SDL_Renderer* &screen);
+	void Init(SDL_Renderer* &screen,TTF_Font* font);
 	void InputAction();
 	void ChangeStatus(int status);
 	void Update(float deltaTime);
@@ -42,4 +42,5 @@ private:
 	SDL_Rect pos_protect;
 	HitBox* protectBox;
 	float protectTime;
+	Text* nofi_respawn;
 };

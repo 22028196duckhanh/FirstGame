@@ -25,13 +25,14 @@ Player::Player()
     skillslot = { 0, 50, 64,64 };
     liveslot = { 0,0,144, 48 };
     protectTime = PROTECTTIME;
+    
 }
 
 Player::~Player()
 {
 }
 
-void Player::Init(SDL_Renderer* &screen)
+void Player::Init(SDL_Renderer* &screen,TTF_Font* font)
 {
     Animation* ani;
 
@@ -115,7 +116,9 @@ void Player::Update(float deltaTime)
     }
     if (velo.y > 0.f && m_curStatus == JUMP ) ChangeStatus(FALL);
     if (pos.y + m_rect.h < GROUND_Y && velo.y < 0.f) ChangeStatus(JUMP);
-    if (useSkill == true) ChangeStatus(ATTACK);
+    if (useSkill == true) {
+        ChangeStatus(ATTACK); 
+    }
     m_action[m_curStatus]->Update();
 
     if (skillAvailable == true) ImgSkillAvailable->Update();
@@ -167,6 +170,7 @@ void Player::Update(float deltaTime)
         m_hitBox->box.w = 30;
     else if (m_curStatus == JUMP)
         m_hitBox->box.w = 20;
+
 }
 
 void Player::ChangeStatus(int status) {

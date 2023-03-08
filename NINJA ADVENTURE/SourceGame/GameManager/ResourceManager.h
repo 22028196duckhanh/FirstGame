@@ -10,14 +10,15 @@
 #include <ctime>
 #include "../GameObject/Animation.h"
 #include "../GameObject/HitBox.h"
+#include "../GameObject/Text.h"
 
 #define FPS 45
 #define GROUND_Y 495
 #define GRAVITY 50
 #define MAX_HEIGHT 350
-#define COOLDOWN_SKILL 2
-#define BOSS1SPAWNTIME 30
-#define BOSS2SPAWNTIME 60
+#define COOLDOWN_SKILL 3
+#define BOSS1SPAWNTIME 34
+#define BOSS2SPAWNTIME 65
 #define PROTECTTIME 5
 
 
@@ -35,6 +36,8 @@ const SDL_Color RED_COLOR = { 255, 0, 0 };
 const SDL_Color WHITE_COLOR = { 255, 255, 255 };
 const SDL_Color BLACK_COLOR = { 0, 0, 0 };
 const SDL_Color GREEN_COLOR = { 0, 128, 0 };
+
+static SDL_Color colorkey[10] = { CYAN_COLOR ,BLUE_COLOR,ORANGE_COLOR,YELLOW_COLOR,LIME_COLOR,PURPLE_COLOR,RED_COLOR,WHITE_COLOR,GREEN_COLOR };
 
 extern std::map<std::string, std::string> m_mapTexture;
 extern std::map<std::string, std::string> m_mapSound;

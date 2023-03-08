@@ -13,11 +13,11 @@ public:
 	BulletManager();
 	~BulletManager();
 	void Init(Collision& collision, SDL_Renderer* screen);
-	void Update(float deltaTime,Player* player,Boss1 * boss1,Boss2 * boss2);
+	void Update(float deltaTime,Player* player,Boss1 * boss1,Boss2 * boss2,Mix_Chunk* sound[]);
 	void renderBullet(SDL_Renderer* screen);
 	void SpawnGround();
 	void SpawnSky(Player* player);
-	void SpawnPlayerSkill(Player*player);
+	void SpawnPlayerSkill(Player*player, Mix_Chunk* sound[]);
 private:
 	std::vector<Bullet*> listBulletGround;
 	std::vector<Bullet*> listBulletSky;
