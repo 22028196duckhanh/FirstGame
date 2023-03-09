@@ -99,7 +99,6 @@ void Player::InputAction()
         if (keystates[SDL_SCANCODE_W]) { velo.y -= move.y; }
         if (keystates[SDL_SCANCODE_SPACE] && skillAvailable == true) { useSkill = true; }
     }
-
 }
 
 void Player::Update(float deltaTime)

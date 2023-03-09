@@ -54,7 +54,7 @@ void BulletManager::Update(float deltaTime, Player* player, Boss1* boss1,Boss2* 
 		player->useSkill = false;
 	}
 	if (boss2->bulletAvailable == true && boss2->useSkill==false) {
-		SpawnSky(player);
+		SpawnSky(player,sound);
 		boss2->useSkill = true;
 		//boss2->bulletAvailable = false;
 	}
@@ -91,12 +91,13 @@ void BulletManager::SpawnGround()
 	bl->reset();
 }
 
-void BulletManager::SpawnSky(Player*player)
+void BulletManager::SpawnSky(Player*player , Mix_Chunk* sound[])
 {
 	Bullet* bl = NULL;
 	for (int i = 0; i < m_BulletNum; i++) {
 		if (listBulletSky[i]->getHitBox()->isAlive == false && listBulletSky[i]->isStop() == true) {
 			bl = listBulletSky[i];
+			Mix_PlayChannel(-1, sound[8], 0);
 			break;
 		}
 	}

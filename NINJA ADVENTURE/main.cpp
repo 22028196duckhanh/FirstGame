@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
 
     ingamemusic = Mix_LoadMUS("DataGame//Musics//Victory.mp3");
     //if (ingamemusic == NULL) std::cout << "aaa";
-    Mix_Chunk* playersound[8] = {
+    Mix_Chunk* playersound[9] = {
         Mix_LoadWAV("DataGame//Musics//yasuo_son.mp3"),       
         Mix_LoadWAV("DataGame//Musics//yasuo_choryon.mp3"),
         Mix_LoadWAV("DataGame//Musics//yasuo_aseryo.mp3"),
@@ -46,8 +46,11 @@ int main(int argc, char* argv[]) {
         Mix_LoadWAV("DataGame//Musics//yasuo_facethewind.mp3"),
         Mix_LoadWAV("DataGame//Musics//yasuo_ton.mp3"),
         Mix_LoadWAV("DataGame//Musics//yasuo_death.mp3"),
-        Mix_LoadWAV("DataGame//Musics//death_is_like_a_wind.mp3")
+        Mix_LoadWAV("DataGame//Musics//death_is_like_a_wind.mp3"),
+        Mix_LoadWAV("DataGame//Musics//Boss2SkillSound.mp3")
     };
+    Mix_VolumeChunk(playersound[8], 20);
+    Mix_VolumeChunk(playersound[7], 100);
 
     interactObj.addObj(player.getHitBox());
     interactObj.addObj(boss1.getHitBox());
@@ -68,7 +71,7 @@ int main(int argc, char* argv[]) {
     float cooldownTime = 0.f;
     float spawnboss1time = 0.f;
     float spawnboss2time = 0.f;
-    float waitingtime = 4.f;
+    float waitingtime = 7.f;
     bool boss1spawn=false;
     float score_val = 0.f;
     bool death_sound = false;
@@ -105,6 +108,7 @@ int main(int argc, char* argv[]) {
         if (player.getHitBox()->isAlive == false && player.getHitBox()->lives > 0 && death_sound == false) {
             Mix_PlayChannel(-1, playersound[6], 0); death_sound = true;
         }
+        Mix_VolumeMusic(60);
         if (Mix_PlayingMusic() == 0)
         {
             Mix_PlayMusic(ingamemusic, -1);

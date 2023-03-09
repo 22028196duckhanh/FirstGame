@@ -1,2 +1,4 @@
-﻿  Text.cpp
+﻿  Player.cpp
+C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\SourceGame\GameObject\Player.cpp(142,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\SourceGame\GameObject\Player.cpp(150,63): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe

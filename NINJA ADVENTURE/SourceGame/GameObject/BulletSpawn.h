@@ -16,7 +16,7 @@ public:
 	void Update(float deltaTime,Player* player,Boss1 * boss1,Boss2 * boss2,Mix_Chunk* sound[]);
 	void renderBullet(SDL_Renderer* screen);
 	void SpawnGround();
-	void SpawnSky(Player* player);
+	void SpawnSky(Player* player, Mix_Chunk* sound[]);
 	void SpawnPlayerSkill(Player*player, Mix_Chunk* sound[]);
 private:
 	std::vector<Bullet*> listBulletGround;
