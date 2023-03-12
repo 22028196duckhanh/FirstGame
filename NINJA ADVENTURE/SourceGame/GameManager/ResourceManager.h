@@ -11,6 +11,7 @@
 #include "../GameObject/Animation.h"
 #include "../GameObject/HitBox.h"
 #include "../GameObject/Text.h"
+#include "../GameObject/GameButton.h"
 
 #define FPS 45
 #define GROUND_Y 495

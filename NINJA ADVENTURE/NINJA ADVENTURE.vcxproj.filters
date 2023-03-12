@@ -66,6 +66,15 @@
     <ClCompile Include="SourceGame\GameObject\Text.cpp">
       <Filter>Source Files\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="SourceGame\GameObject\GameButton.cpp">
+      <Filter>Source Files\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceGame\GameManager\GameMenu.cpp">
+      <Filter>Source Files\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceGame\GameManager\GameEnd.cpp">
+      <Filter>Source Files\GameManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceGame\GameManager\ResourceManager.h">
@@ -109,6 +118,15 @@
     </ClInclude>
     <ClInclude Include="SourceGame\GameObject\Text.h">
       <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameObject\GameButton.h">
+      <Filter>Source Files\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameManager\GameMenu.h">
+      <Filter>Source Files\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameManager\GameEnd.h">
+      <Filter>Source Files\GameManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

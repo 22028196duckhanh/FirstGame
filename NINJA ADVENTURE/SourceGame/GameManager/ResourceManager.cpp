@@ -12,6 +12,7 @@ void InitResoucre() {
 	m_mapTexture["layer3"] = "DataGame//Textures//layer3.png";
 	m_mapTexture["layer2"] = "DataGame//Textures//layer2.png";
 	m_mapTexture["layer1"] = "DataGame//Textures//layer1.png";
+    m_mapTexture["Idle"] = "DataGame//Textures//Idle.png";
 	m_mapTexture["Run"] = "DataGame//Textures//Run.png";
 	m_mapTexture["Jump"] = "DataGame//Textures//Jump.png";
 	m_mapTexture["Fall"] = "DataGame//Textures//Fall.png";
@@ -58,7 +59,15 @@ void InitResoucre() {
     m_mapTexture["bossnhen2"] = "DataGame//Textures//bossnhen2.png";
     m_mapTexture["Boss2Skill"] = "DataGame//Textures//Boss2Skill.png";
     m_mapTexture["Boss2SkillImpact"] = "DataGame//Textures//Boss2SkillImpact.png";
-
+    m_mapTexture["Play"] = "DataGame//Textures//Play-sheet.png";
+    m_mapTexture["Info"] = "DataGame//Textures//Info-sheet.png";
+    m_mapTexture["Setting"] = "DataGame//Textures//Setting-sheet.png";
+    m_mapTexture["HighScore"] = "DataGame//Textures//HighScore-sheet.png";
+    m_mapTexture["Exit"] = "DataGame//Textures//Exit-sheet.png";
+    m_mapTexture["Back"] = "DataGame//Textures//Back-sheet.png";
+    m_mapTexture["Home"] = "DataGame//Textures//Home-sheet.png";
+    m_mapTexture["Again"] = "DataGame//Textures//Again-sheet.png";
+    m_mapTexture["Bkground"] = "DataGame//Textures//background.png";
 
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
