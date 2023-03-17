@@ -1,3 +1,1 @@
-﻿  main.cpp
-C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\main.cpp(233,40): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-  NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe
+﻿  NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe

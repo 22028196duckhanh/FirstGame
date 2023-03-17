@@ -12,6 +12,25 @@ Bullet::Bullet()
 
 Bullet::~Bullet()
 {
+	if (m_hitBox != NULL) {
+		//delete m_hitBox;
+		m_hitBox = NULL;
+	}
+	m_runAni->~Animation();
+	m_deathAni->~Animation();
+	m_curAni->~Animation();
+	if (m_runAni != NULL) {
+		//delete m_runAni;
+		m_runAni = NULL;
+	}
+	if (m_deathAni != NULL) {
+		//delete m_deathAni;
+		m_deathAni = NULL;
+	}
+	if (m_curAni != NULL) {
+		//delete m_curAni;
+		m_curAni = NULL;
+	}
 }
 
 void Bullet::Init(SDL_Renderer* screen, std::string name1, std::string name2, int x1, int y1, int x2, int y2)

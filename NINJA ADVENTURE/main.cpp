@@ -16,36 +16,54 @@ int main(int argc, char* argv[]) {
     SDL_Renderer* screen = NULL;
     SDL_Event event;
     TTF_Font* game_font = NULL;
+    Mix_Chunk* menumusic = NULL;
+    Mix_Chunk* defeatsound = NULL;
     Mix_Music* ingamemusic = NULL;
-    Mix_Music* menumusic = NULL;
     GameMenu gMenu;
     GameEnd gEnd;
 
     initWorld(window, screen);
     InitResoucre();    
     game_font = TTF_OpenFont("DataGame//Fonts//font.ttf", 20);
+    menumusic = Mix_LoadWAV("DataGame//Musics//menu_music.mp3");
+    defeatsound = Mix_LoadWAV("DataGame//Musics//end_sound.mp3");
+    Mix_VolumeChunk(menumusic, 80);
+    Mix_VolumeChunk(defeatsound, 80);
     gMenu.Init(screen,game_font);
     gEnd.Init(screen, game_font);
-
-    bool inMenu = true;
-    bool PlayAgain = true;
-    bool EndGame = true;
 
     Uint32 curTime = 0;
     Uint32 preTime = 0;
     float deltaTime = 0.f;
 
+    bool inMenu = true;
+    bool PlayAgain = true;
+    bool EndGame = true;
+    bool menumusicplayed = false;
+    bool defeatsoundplayed = false;
     while (inMenu) {
         curTime = SDL_GetTicks();
         deltaTime = (float)(curTime - preTime) / 1000.f;
         preTime = curTime;
         while (SDL_PollEvent(&event)) {
-            gMenu.Update(0, &event);
-            if (gMenu.play_btn->isTouch == true) inMenu = false;
+            if (event.type == SDL_QUIT) {
+                inMenu = false;
+                EndGame = false;
+                PlayAgain = false;
+                
+            }
+            gMenu.Update(&event);
+            if (gMenu.play_btn->isTouch == true) { inMenu = false; Mix_Pause(1); }
+            if (gMenu.exit_btn->isTouch == true) { inMenu = false; PlayAgain = false; EndGame = false; }
         }
+        if (menumusicplayed == false)
+        {
+            Mix_PlayChannel(1, menumusic, -1); menumusicplayed = true;
+        }
+        
         SDL_RenderClear(screen);
-        SDL_SetRenderDrawColor(screen, 78, 86, 99, 255);
-        gMenu.Update(deltaTime, &event);
+        SDL_SetRenderDrawColor(screen, 78, 86, 99, 0);
+        gMenu.Update(&event);
         gMenu.RenderMenu(screen);
         SDL_Delay(25);
         SDL_RenderPresent(screen);
@@ -53,6 +71,7 @@ int main(int argc, char* argv[]) {
 
     while (PlayAgain) {
         EndGame = true;
+        defeatsoundplayed = false;
         ParallaxBG bkground;
         Player player;
         Collision interactObj;
@@ -60,7 +79,7 @@ int main(int argc, char* argv[]) {
         Boss1 boss1;
         Boss2 boss2;
         BulletManager bulletmanager;
-        //std::vector<Button*> button;
+
         //Init
         bkground.Init(screen);
         player.Init(screen, game_font);
@@ -68,23 +87,6 @@ int main(int argc, char* argv[]) {
         boss2.Init(screen);
         creepmanager.Init(interactObj, screen);
         bulletmanager.Init(interactObj, screen);
-        /*Button* tmp_btn;
-        tmp_btn = new Button();
-        tmp_btn->Init(screen, "Play", 0);
-        button.push_back(tmp_btn);
-        tmp_btn = new Button();
-        tmp_btn->Init(screen, "Info", 1);
-        button.push_back(tmp_btn);
-        tmp_btn = new Button();
-        tmp_btn->Init(screen, "Setting",2);
-        button.push_back(tmp_btn);
-        tmp_btn = new Button();
-        tmp_btn->Init(screen, "HighScore", 3);
-        button.push_back(tmp_btn);
-        tmp_btn = new Button();
-        tmp_btn->Init(screen, "Exit", 4);
-        button.push_back(tmp_btn);*/
-
 
         ingamemusic = Mix_LoadMUS("DataGame//Musics//Victory.mp3");
         Mix_Chunk* playersound[9] = {
@@ -122,7 +124,7 @@ int main(int argc, char* argv[]) {
         bool boss1spawn = false;
         float score_val = 0.f;
         bool death_sound = false;
-
+        bool isDecrease = true; // giam thoi gian hoi chieu cua boss
 
         bool is_quit = false;
         while (!is_quit) {
@@ -156,11 +158,9 @@ int main(int argc, char* argv[]) {
             if (player.getHitBox()->isAlive == false && player.getHitBox()->lives > 0 && death_sound == false) {
                 Mix_PlayChannel(-1, playersound[6], 0); death_sound = true;
             }
-
-            if (Mix_PlayingMusic() == 0)
-            {
+            if (Mix_PlayingMusic()==0) {
                 Mix_PlayMusic(ingamemusic, -1);
-            }
+            }            
             if (player.getHitBox()->isAlive == false && Mix_PausedMusic() == 0) Mix_PauseMusic();
             if (player.getHitBox()->isAlive == true && Mix_PausedMusic() == 1) Mix_ResumeMusic();
 
@@ -168,6 +168,7 @@ int main(int argc, char* argv[]) {
                 if (event.type == SDL_QUIT) {
                     is_quit = true;
                     EndGame = false;
+                    PlayAgain = false;
                 }
                 if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
                     is_quit = true;
@@ -182,9 +183,6 @@ int main(int argc, char* argv[]) {
                         Mix_PauseMusic();
                     }
                 }
-                /*for (auto x : button) {
-                    x->Update(deltaTime, &event);
-                }*/
             }
 
             player.InputAction();
@@ -201,6 +199,14 @@ int main(int argc, char* argv[]) {
             }
             bulletmanager.Update(deltaTime, &player, &boss1, &boss2, playersound);
             interactObj.Update();
+            if ((int)score_val % 40) {
+                if (isDecrease) {
+                    if (score_val >= 80) boss1.m_changeTime -= 1.f;
+                    if (score_val >= 100) boss2.m_skillTime -= 1.f;
+                    isDecrease = false;
+                }
+            }
+            else isDecrease = true;
 
             score_text = std::to_string((int)score_val);
             scoregame->setText("Score: " + score_text);
@@ -217,9 +223,6 @@ int main(int argc, char* argv[]) {
             creepmanager.renderManyCreep(screen);
             boss1.renderBoss1(screen);
             bulletmanager.renderBullet(screen);
-            /*for (auto x : button) {
-                x->RenderButton(screen);
-            }*/
 
             if (player.getHitBox()->isAlive == false && player.getHitBox()->lives > 0) {
                 nofi_respawn->RenderText(screen);
@@ -236,38 +239,63 @@ int main(int argc, char* argv[]) {
                 waitingtime -= deltaTime;
                 if (waitingtime < 0) {
                     is_quit = true;
+                    for (int i = 0; i < 9; i++) {
+                        Mix_FreeChunk(playersound[i]);
+                    }
+                    Mix_FreeMusic(ingamemusic);
+                    delete nofi_respawn;
+                    delete scoregame;
                 }
             }
-            //write free, destructor, call here;
+            std::cout << deltaTime << std::endl;
         }
-        while (EndGame) {
+        while (EndGame) {            
+            
             curTime = SDL_GetTicks();
             deltaTime = (float)(curTime - preTime) / 1000.f;
             preTime = curTime;
             while (SDL_PollEvent(&event)) {
-                gEnd.Update(0, &event);
-                if (gEnd.again_btn->isTouch == true) EndGame = false;
-                if (gEnd.home_btn->isTouch == true) {
-                    inMenu = true;
-                    while (inMenu) {
-                        while (SDL_PollEvent(&event)) {
-                            gMenu.Update(0, &event);
-                            if (gMenu.play_btn->isTouch == true) {
-                                inMenu = false; EndGame = false;
-                            }
-                        }
-                        SDL_RenderClear(screen);
-                        SDL_SetRenderDrawColor(screen, 78, 86, 99, 255);
-                        gMenu.Update(deltaTime, &event);
-                        gMenu.RenderMenu(screen);
-                        SDL_Delay(25);
-                        SDL_RenderPresent(screen);
-                    }
+                if (event.type == SDL_QUIT) {
+                    EndGame = false;
+                    PlayAgain = false;
                 }
+                gEnd.Update(&event);
                 SDL_RenderClear(screen);
                 gEnd.RenderEnd(screen);
                 SDL_RenderPresent(screen);
+                if (defeatsoundplayed == false) {
+                    Mix_PlayChannel(-1, defeatsound, 0);
+                    defeatsoundplayed = true;
+                }
+                if (gEnd.again_btn->isTouch == true) EndGame = false;
+                if (gEnd.home_btn->isTouch == true) {
+                    inMenu = true;
+                }
+                while (inMenu) {
+                    curTime = SDL_GetTicks();
+                    deltaTime = (float)(curTime - preTime) / 1000.f;
+                    preTime = curTime;
+                    gMenu.Update(&event);
+                    SDL_RenderClear(screen);
+                    SDL_SetRenderDrawColor(screen, 78, 86, 99, 0);
+                    gMenu.RenderMenu(screen);
+                    SDL_Delay(25);
+                    SDL_RenderPresent(screen);
+                    Mix_Resume(1);
+                    while (SDL_PollEvent(&event)) {
+                        if (event.type == SDL_QUIT) {
+                            inMenu = false;
+                            EndGame = false;
+                            PlayAgain = false;
+                        }
+                        gMenu.Update(&event);
+                        if (gMenu.play_btn->isTouch == true) {
+                            inMenu = false; EndGame = false; Mix_Pause(1);
+                        }
+                        if (gMenu.exit_btn->isTouch == true) { inMenu = false; PlayAgain = false; EndGame = false; }
+                    }
 
+                }              
             }
         }
     }

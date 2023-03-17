@@ -10,7 +10,20 @@ CreepManager::CreepManager()
 
 CreepManager::~CreepManager()
 {
-
+	for (auto x : listCreepGround) {
+		x->~Creep();
+		if (x != NULL) {
+			//delete x;
+			x = NULL;
+		}
+	}
+	for (auto x : listCreepSky) {
+		x->~Creep();
+		if (x != NULL) {
+			//delete x;
+			x = NULL;
+		}
+	}
 }
 
 void CreepManager::Init(Collision& collision,SDL_Renderer* screen)

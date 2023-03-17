@@ -18,6 +18,7 @@ public:
 	void renderBoss1(SDL_Renderer*& screen);
 	HitBox* getHitBox() { return m_hitBox; }
 	bool bulletAvailable;
+	float m_changeTime;
 private:
 	int m_curStatus;
 	int m_prevStatus;
@@ -26,7 +27,7 @@ private:
 	std::vector<Animation*> m_action;
 	Vector2d pos;
 	Vector2d velo;
-	float m_changeTime;
+	
 	float m_curTime;
 
 };

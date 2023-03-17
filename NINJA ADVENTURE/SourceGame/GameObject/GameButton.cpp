@@ -10,6 +10,10 @@ Button::Button()
 
 Button::~Button()
 {
+    if (btn_image != NULL) {
+        SDL_DestroyTexture(btn_image);
+        btn_image = NULL;
+    }
 }
 
 void Button::Init(SDL_Renderer* screen,std::string name,int tag)
@@ -27,7 +31,7 @@ void Button::Init(SDL_Renderer* screen,std::string name,int tag)
     if (m_tag == EXIT) { des.x = (SCREEN_WIDTH - des.w) / 2 + des.w * 2; des.y = (SCREEN_HEIGHT - des.h) / 2 + des.h * 1.5; }*/
 }
 
-void Button::Update(float deltaTime,SDL_Event* e)
+void Button::Update(SDL_Event* e)
 {
     isTouch = false;
     HandleTouchEvent(e);

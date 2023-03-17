@@ -12,6 +12,7 @@ public:
 	bool bulletAvailable;
 	bool useSkill;
 	bool boss2spawn;
+	float m_skillTime;
 private:
 	SDL_Rect m_rect;
 	SDL_Rect pos_skill;
@@ -19,6 +20,6 @@ private:
 	Animation* m_skillStatus;
 	Vector2d pos;
 	Vector2d velo;
-	float m_skillTime;
+	
 	float m_curTime;
 };

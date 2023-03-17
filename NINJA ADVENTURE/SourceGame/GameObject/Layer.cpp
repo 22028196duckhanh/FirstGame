@@ -1,5 +1,17 @@
 #include "Layer.h"
 
+Layer::Layer()
+{
+}
+
+Layer::~Layer()
+{
+	if (layer != NULL) {
+		SDL_DestroyTexture(layer);
+		layer = NULL;
+	}
+}
+
 void Layer::Init(std::string name, SDL_Renderer* screen, int LAYERSPEED)
 {
 	layer = IMG_LoadTexture(screen, m_mapTexture[name].c_str());

@@ -19,6 +19,16 @@ Boss1::Boss1()
 
 Boss1::~Boss1()
 {
+    if (m_hitBox!= NULL)
+    delete m_hitBox;
+    for (auto x : m_action) {
+        x->~Animation();
+        if (x != NULL) {
+            delete x;
+            x = NULL;
+        }
+    }    
+
 }
 
 void Boss1::Init(SDL_Renderer*& screen)

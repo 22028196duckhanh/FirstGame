@@ -1,5 +1,20 @@
 #include "ParallaxBackground.h"
 
+ParallaxBG::ParallaxBG()
+{
+}
+
+ParallaxBG::~ParallaxBG()
+{
+	for (auto x : BG) {
+		x->~Layer();
+		if (x != NULL) {
+			delete x;
+			x = NULL;
+		}
+	}
+}
+
 void ParallaxBG::Init(SDL_Renderer*screen)
 {
 	Layer* layer;

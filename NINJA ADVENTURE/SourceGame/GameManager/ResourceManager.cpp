@@ -1,6 +1,5 @@
 #include "ResourceManager.h"
 std::map<std::string, std::string> m_mapTexture;
-std::map<std::string, std::string> m_mapSound;
 
 void InitResoucre() {
 	m_mapTexture["layer9"] = "DataGame//Textures//layer9.png";
@@ -67,8 +66,9 @@ void InitResoucre() {
     m_mapTexture["Back"] = "DataGame//Textures//Back-sheet.png";
     m_mapTexture["Home"] = "DataGame//Textures//Home-sheet.png";
     m_mapTexture["Again"] = "DataGame//Textures//Again-sheet.png";
-    m_mapTexture["Bkground"] = "DataGame//Textures//background.png";
-
+    m_mapTexture["Bkgrend"] = "DataGame//Textures//bkgrend.png";
+    m_mapTexture["gametitle"] = "DataGame//Textures//game_title.png";
+    m_mapTexture["Bkgrmenu"] = "DataGame//Textures//background.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;

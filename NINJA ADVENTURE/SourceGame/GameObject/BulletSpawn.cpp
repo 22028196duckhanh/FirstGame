@@ -7,6 +7,27 @@ BulletManager::BulletManager()
 
 BulletManager::~BulletManager()
 {
+	for (auto x : listBulletGround) {
+		x->~Bullet();
+		if (x != NULL) {
+			//delete x;
+			x = NULL;
+		}
+	}
+	for (auto x : listBulletSky) {
+		x->~Bullet();
+		if (x != NULL) {
+			//delete x;
+			x = NULL;
+		}
+	}
+	for (auto x : listPlayerSkill) {
+		x->~Bullet();
+		if (x != NULL) {
+			//delete x;
+			x = NULL;
+		}
+	}
 }
 
 void BulletManager::Init(Collision& collision, SDL_Renderer* screen)

@@ -15,7 +15,19 @@ Animation::Animation()
 
 Animation::~Animation()
 {
-	
+	if (sprite != NULL) {
+		SDL_DestroyTexture(sprite);
+		sprite = NULL;
+	}
+	m_rectSize.first = 0;
+	m_rectSize.second = 0;
+	src = { 0,0,0,0 };
+	m_curFrame = 0;
+	m_width = 0;
+	m_height = 0;
+	m_Num = 0;
+	m_stopAtEndFrame = false;
+	SLOW = 0;
 }
 
 void Animation::CalculateSize(int width, int height) {

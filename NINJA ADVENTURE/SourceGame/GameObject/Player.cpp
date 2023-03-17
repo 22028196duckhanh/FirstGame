@@ -30,6 +30,44 @@ Player::Player()
 
 Player::~Player()
 {
+    delete m_hitBox;
+    m_hitBox = NULL;
+    for (auto x : m_action) {
+        x->~Animation();
+        if (x != NULL) {
+            delete x;
+            x = NULL;
+        }
+    }
+    for (auto x : lives) {
+        if (x != NULL) {
+            SDL_DestroyTexture(x);
+            x = NULL;
+        }
+    }
+    ImgSkillAvailable->~Animation();
+    ImgSkillCooldown->~Animation();
+    if (ImgSkillAvailable != NULL) {
+        delete ImgSkillAvailable;
+        ImgSkillAvailable = NULL;
+    }
+    if (ImgSkillCooldown != NULL) {
+        delete ImgSkillCooldown;
+        ImgSkillCooldown = NULL;
+    }
+    protect->~Animation();
+    if (protect != NULL) {
+        delete protect;
+        protect = NULL;
+    }
+    if (protectBox != NULL) {
+        delete protectBox;
+        protectBox = NULL;
+    }
+    if (nofi_respawn != NULL) {
+        delete nofi_respawn;
+        nofi_respawn = NULL;
+    }
 }
 
 void Player::Init(SDL_Renderer* &screen,TTF_Font* font)

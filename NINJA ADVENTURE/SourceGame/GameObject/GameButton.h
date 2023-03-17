@@ -17,7 +17,7 @@ public:
 	Button();
 	~Button();
 	void Init(SDL_Renderer* screen, std::string name,int tag);
-	void Update(float deltaTime, SDL_Event* e);
+	void Update(SDL_Event* e);
 	void RenderButton(SDL_Renderer* screen);
 
 	void HandleTouchEvent(SDL_Event* e);

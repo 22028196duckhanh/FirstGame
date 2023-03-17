@@ -5,6 +5,8 @@
 
 class ParallaxBG {
 public:
+	ParallaxBG();
+	~ParallaxBG();
 	void Init(SDL_Renderer* screen);
 	void Update();
 	void RenderBG(SDL_Renderer* screen,Boss2* boss2);

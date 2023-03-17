@@ -5,7 +5,7 @@ public:
 	GameMenu();
 	~GameMenu();
 	void Init(SDL_Renderer* screen,TTF_Font* font);
-	void Update(float deltaTime, SDL_Event* e);
+	void Update(SDL_Event* e);
 	void RenderMenu(SDL_Renderer* screen);
 	Button* play_btn;
 	Button* info_btn;
@@ -15,7 +15,9 @@ public:
 private:
 	SDL_Texture* menu_background;
 	SDL_Rect bgr_pos;
+	SDL_Texture* game_name;
+	SDL_Rect name_pos;
 	Animation* menu_player;
 	SDL_Rect player_pos;
-	Text* game_name;
+
 };

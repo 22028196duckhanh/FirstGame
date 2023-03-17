@@ -16,6 +16,16 @@ Boss2::Boss2()
 
 Boss2::~Boss2()
 {
+    m_runStatus->~Animation();
+    m_skillStatus->~Animation();
+    if (m_runStatus != NULL) {
+        delete m_runStatus; 
+        m_runStatus = NULL;
+    }
+    if (m_skillStatus != NULL) {
+        delete m_skillStatus;
+        m_skillStatus = NULL;
+    }
 }
 
 void Boss2::Init(SDL_Renderer*& screen)

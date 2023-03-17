@@ -13,7 +13,7 @@
 #include "../GameObject/Text.h"
 #include "../GameObject/GameButton.h"
 
-#define FPS 45
+#define FPS 50
 #define GROUND_Y 495
 #define GRAVITY 50
 #define MAX_HEIGHT 350

@@ -9,6 +9,10 @@ Text::Text()
 
 Text::~Text()
 {
+	if (m_texture != NULL) {
+		SDL_DestroyTexture(m_texture);
+		m_texture = NULL;
+	}
 }
 
 void Text::LoadText(TTF_Font* font,SDL_Renderer* screen)

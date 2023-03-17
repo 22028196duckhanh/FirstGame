@@ -4,6 +4,8 @@
 class Layer
 {
 public:
+	Layer();
+	~Layer();
 	void Init(std::string name, SDL_Renderer* screen, int LAYERSPEED);
 	void Update();	
 	void renderLayer(SDL_Renderer* screen);
