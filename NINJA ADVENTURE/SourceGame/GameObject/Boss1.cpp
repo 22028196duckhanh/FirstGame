@@ -104,10 +104,10 @@ void Boss1::Update(float deltaTime)
     m_rect.y = (int)pos.y;
     m_rect.w = m_action[m_curStatus]->getRectSize().first;
     m_rect.h = m_action[m_curStatus]->getRectSize().second;
-    m_hitBox->box.y = m_rect.y+25;
+    m_hitBox->box.y = m_rect.y+35;
     m_hitBox->box.x = m_rect.x+50;
-    m_hitBox->box.w = 230;
-    m_hitBox->box.h = 180;
+    m_hitBox->box.w = 220;
+    m_hitBox->box.h = 170;
     if (m_curStatus == BOSSSKILL){
         m_hitBox->box.w = 130;
         m_hitBox->box.h = 100;

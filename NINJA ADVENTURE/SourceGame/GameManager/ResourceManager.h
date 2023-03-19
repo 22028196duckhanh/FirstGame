@@ -18,7 +18,7 @@
 #define GRAVITY 50
 #define MAX_HEIGHT 350
 #define COOLDOWN_SKILL 3
-#define BOSS1SPAWNTIME 34
+#define BOSS1SPAWNTIME 33
 #define BOSS2SPAWNTIME 65
 #define PROTECTTIME 5
 
@@ -41,7 +41,7 @@ const SDL_Color GREEN_COLOR = { 0, 128, 0 };
 static SDL_Color colorkey[10] = { CYAN_COLOR ,BLUE_COLOR,ORANGE_COLOR,YELLOW_COLOR,LIME_COLOR,PURPLE_COLOR,RED_COLOR,WHITE_COLOR,GREEN_COLOR };
 
 extern std::map<std::string, std::string> m_mapTexture;
-extern std::map<std::string, std::string> m_mapSound;
+//extern std::map<std::string, std::string> m_mapSound;
 
 void InitResoucre();
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen);

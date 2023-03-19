@@ -8,7 +8,7 @@ Player::Player()
     m_prevStatus = RUN;
     pos.x = 200.f;
     pos.y = 400.f;
-    velo.x = 0.f;
+    velo.x = 0.f; 
     velo.y = 300.f;
     move.x = 100.f;
     move.y = 100.f;

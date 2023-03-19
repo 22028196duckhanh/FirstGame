@@ -81,6 +81,9 @@
     <ClCompile Include="SourceGame\GameManager\GameSetting.cpp">
       <Filter>Source Files\GameManager</Filter>
     </ClCompile>
+    <ClCompile Include="SourceGame\GameManager\GameHighScore.cpp">
+      <Filter>Source Files\GameManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SourceGame\GameManager\ResourceManager.h">
@@ -138,6 +141,9 @@
       <Filter>Source Files\GameManager</Filter>
     </ClInclude>
     <ClInclude Include="SourceGame\GameManager\GameSetting.h">
+      <Filter>Source Files\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="SourceGame\GameManager\GameHighScore.h">
       <Filter>Source Files\GameManager</Filter>
     </ClInclude>
   </ItemGroup>

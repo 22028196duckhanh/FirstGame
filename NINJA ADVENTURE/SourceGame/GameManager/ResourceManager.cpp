@@ -69,6 +69,8 @@ void InitResoucre() {
     m_mapTexture["Bkgrend"] = "DataGame//Textures//bkgrend.png";
     m_mapTexture["gametitle"] = "DataGame//Textures//game_title.png";
     m_mapTexture["Bkgrmenu"] = "DataGame//Textures//background.png";
+    m_mapTexture["Bkgr_template"] = "DataGame//Textures//bkgr_template.png";
+    m_mapTexture["character"]  = "DataGame//Textures//main_character.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;

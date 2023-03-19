@@ -111,6 +111,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\SDL_lib_VS\SDL2_ttf-2.20.2\lib\x64;C:\SDL_lib_VS\SDL2_mixer-2.6.3\lib\x64;C:\SDL_lib_VS\SDL2_image-2.6.3\lib\x64;C:\SDL_lib_VS\SDL2-2.26.3\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>LinkVerboseLib</ShowProgress>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -133,6 +134,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SourceGame\GameManager\CollisionManager.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameEnd.cpp" />
+    <ClCompile Include="SourceGame\GameManager\GameHighScore.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameInfo.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameMenu.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameSetting.cpp" />
@@ -154,6 +156,7 @@
   <ItemGroup>
     <ClInclude Include="SourceGame\GameManager\CollisionManager.h" />
     <ClInclude Include="SourceGame\GameManager\GameEnd.h" />
+    <ClInclude Include="SourceGame\GameManager\GameHighScore.h" />
     <ClInclude Include="SourceGame\GameManager\GameInfo.h" />
     <ClInclude Include="SourceGame\GameManager\GameMenu.h" />
     <ClInclude Include="SourceGame\GameManager\GameSetting.h" />
