@@ -1,4 +1,4 @@
-﻿//#include "SourceGame/GameManager/ResourceManager.h"
+﻿#include "SourceGame/GameManager/ResourceManager.h"
 #include "SourceGame/GameManager/CollisionManager.h"
 #include "SourceGame/GameObject/ParallaxBackground.h"
 #include "SourceGame/GameObject/Player.h"
@@ -13,6 +13,7 @@
 #include "SourceGame/GameManager/GameInfo.h"
 #include "SourceGame/GameManager/GameSetting.h"
 #include "SourceGame/GameManager/GameHighScore.h"
+#include "SourceGame/GameManager/GamePause.h"
 
 int main(int argc, char* argv[]) {
     SDL_Window* window = NULL;
@@ -51,6 +52,8 @@ int main(int argc, char* argv[]) {
     bool inInfo = true;
     bool inSetting = true;
     bool inHighScore = true;
+    bool inPause = true;
+    bool pausetohome = true;
     bool menumusicplayed = false;
     bool defeatsoundplayed = false;
     while (inMenu) {
@@ -156,7 +159,7 @@ int main(int argc, char* argv[]) {
             SDL_RenderPresent(screen);
         
     }
-
+    //GamePlay
     while (PlayAgain) {
         EndGame = true;
         defeatsoundplayed = false;
@@ -167,6 +170,8 @@ int main(int argc, char* argv[]) {
         Boss1 boss1;
         Boss2 boss2;
         BulletManager bulletmanager;
+        Button pause;
+        GamePause gPause;
 
         //Init
         bkground.Init(screen);
@@ -175,6 +180,9 @@ int main(int argc, char* argv[]) {
         boss2.Init(screen);
         creepmanager.Init(interactObj, screen);
         bulletmanager.Init(interactObj, screen);
+        gPause.Init(screen, game_font);
+        pause.Init(screen, "Pause", 0);
+        pause.setPos(SCREEN_WIDTH - 76,0);
 
         ingamemusic = Mix_LoadMUS("DataGame//Musics//Victory.mp3");
         Mix_Chunk* playersound[9] = {
@@ -208,15 +216,17 @@ int main(int argc, char* argv[]) {
         float cooldownTime = 0.f;
         float spawnboss1time = 0.f;
         float spawnboss2time = 0.f;
-        float waitingtime = 7.f;
+        float waitingtime = 8.f;
         bool boss1spawn = false;
         float score_val = 0.f;
         bool death_sound = false;
         bool isDecrease = true; // giam thoi gian hoi chieu cua boss
 
+        //gameloop
         bool is_quit = false;
         while (!is_quit) {
-
+            inPause = false;
+            pausetohome = false;
             curTime = SDL_GetTicks();
             deltaTime = (float)(curTime - preTime) / 1000.f;
             preTime = curTime;
@@ -225,7 +235,7 @@ int main(int argc, char* argv[]) {
                 player.skillAvailable = true;
                 cooldownTime = 0;
             }
-
+            // quan li thoi gian boss ra
             if (spawnboss1time < BOSS1SPAWNTIME && boss1spawn == false && player.getHitBox()->isAlive == true) spawnboss1time += deltaTime;
             else if (spawnboss1time < BOSS1SPAWNTIME && boss1spawn == false && player.getHitBox()->isAlive == false) spawnboss1time += 0;
             else
@@ -236,9 +246,9 @@ int main(int argc, char* argv[]) {
             if (spawnboss2time < BOSS2SPAWNTIME && boss2.boss2spawn == false && player.getHitBox()->isAlive == true) spawnboss2time += deltaTime;
             else if (spawnboss2time < BOSS2SPAWNTIME && boss2.boss2spawn == false && player.getHitBox()->isAlive == false) spawnboss2time += 0;
             else { boss2.boss2spawn = true; spawnboss2time = 0; }
-
+            // diem tang theo thoi gian
             if (player.getHitBox()->isAlive == true) score_val += deltaTime;
-
+            //am thanh va cham
             if (player.getHitBox()->isAlive == false && player.getHitBox()->lives <= 0 && death_sound == false) {
                 Mix_PlayChannel(-1, playersound[6], 0);
                 Mix_PlayChannel(-1, playersound[7], 0); death_sound = true;
@@ -258,8 +268,6 @@ int main(int argc, char* argv[]) {
                     EndGame = false;
                     PlayAgain = false;
                 }
-                if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
-                    is_quit = true;
                 if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_m)
                 {
                     if (Mix_PausedMusic() == 1)
@@ -271,74 +279,128 @@ int main(int argc, char* argv[]) {
                         Mix_PauseMusic();
                     }
                 }
-            }
-
-            player.InputAction();
-            SDL_RenderClear(screen);
-            SDL_SetRenderDrawColor(screen, 255, 255, 255, 255);
-            //Update
-            player.Update(deltaTime);
-            if (player.getHitBox()->isAlive == true) {
-                bkground.Update();
-                creepmanager.Update(deltaTime);
-                if (boss1spawn == true) boss1.Update(deltaTime);
-                if (boss2.boss2spawn == true) boss2.Update(deltaTime);
-                death_sound = false;
-            }
-            bulletmanager.Update(deltaTime, &player, &boss1, &boss2, playersound);
-            interactObj.Update();
-            if ((int)score_val % 40) {
-                if (isDecrease) {
-                    if (score_val >= 80) boss1.m_changeTime -= 1.f;
-                    if (score_val >= 100) boss2.m_skillTime -= 1.f;
-                    isDecrease = false;
+                pause.Update(&event);
+                //GamePause
+                if (pause.isTouch == true) {
+                    inPause = true;
+                    Mix_PauseMusic();
                 }
-            }
-            else isDecrease = true;
-
-            score_text = std::to_string((int)score_val);
-            scoregame->setText("Score: " + score_text);
-            scoregame->LoadText(game_font, screen);
-
-            nofi_respawn->setText("Press R to respawn");
-            nofi_respawn->LoadText(game_font, screen);
-            nofi_respawn->setPos(player.getHitBox()->box.x - 30, player.getHitBox()->box.y - 20);
-            nofi_respawn->setSize(150, 15);
-            //Render
-            bkground.RenderBG(screen, &boss2);
-            scoregame->RenderText(screen);
-            player.renderPlayer(screen);
-            creepmanager.renderManyCreep(screen);
-            boss1.renderBoss1(screen);
-            bulletmanager.renderBullet(screen);
-
-            if (player.getHitBox()->isAlive == false && player.getHitBox()->lives > 0) {
-                nofi_respawn->RenderText(screen);
-                nofi_respawn->setColor(colorkey[countcolor / 10]);
-                countcolor += 2;
-                if (countcolor > 80) countcolor = 0;
-            }
-            SDL_RenderPresent(screen);
-
-            if (1000 / FPS > deltaTime)
-                SDL_Delay((1000 / FPS) - deltaTime);
-
-            if (player.getHitBox()->isAlive == false && player.getHitBox()->lives <= 0) {
-                waitingtime -= deltaTime;
-                if (waitingtime < 0) {
-                    is_quit = true;
-                    for (int i = 0; i < 9; i++) {
-                        Mix_FreeChunk(playersound[i]);
+                while (inPause) {
+                    curTime = SDL_GetTicks();
+                    deltaTime = (float)(curTime - preTime) / 1000.f;
+                    preTime = curTime;
+                    gPause.Update(&event);
+                    SDL_RenderClear(screen);
+                    bkground.RenderBG(screen, &boss2);
+                    scoregame->RenderText(screen);
+                    player.renderPlayer(screen);
+                    creepmanager.renderManyCreep(screen);
+                    boss1.renderBoss1(screen);
+                    bulletmanager.renderBullet(screen);
+                    gPause.RenderPause(screen);
+                    SDL_RenderPresent(screen);
+                    while (SDL_PollEvent(&event)) {
+                        if (event.type == SDL_QUIT) {
+                            inSetting = false;
+                            inMenu = false;
+                            EndGame = false;
+                            PlayAgain = false;
+                            inPause = false;
+                            break;
+                        }
+                        gPause.Update(&event);
+                        if (gPause.resume_btn->isTouch == true) {
+                            inPause = false;
+                            Mix_ResumeMusic();
+                            break;
+                        }
+                        if (gPause.home_btn->isTouch == true) {
+                            inPause = false;
+                            pausetohome = true;
+                            is_quit = true;
+                            inMenu = true;
+                            for (int i = 0; i < 9; i++) {
+                                Mix_FreeChunk(playersound[i]);
+                            }
+                            Mix_FreeMusic(ingamemusic);
+                            delete nofi_respawn;
+                            delete scoregame;
+                            break;
+                        }
                     }
-                    Mix_FreeMusic(ingamemusic);
-                    delete nofi_respawn;
-                    delete scoregame;
+                }
+                if (pausetohome) break;
+                if (waitingtime < 0) break;
+            }
+            if (!pausetohome) {
+                player.InputAction();
+                SDL_RenderClear(screen);
+                SDL_SetRenderDrawColor(screen, 255, 255, 255, 255);
+                //Update
+                player.Update(deltaTime);
+                if (player.getHitBox()->isAlive == true) {
+                    bkground.Update();
+                    creepmanager.Update(deltaTime);
+                    if (boss1spawn == true) boss1.Update(deltaTime);
+                    if (boss2.boss2spawn == true) boss2.Update(deltaTime);
+                    death_sound = false;
+                }
+                bulletmanager.Update(deltaTime, &player, &boss1, &boss2, playersound);
+                interactObj.Update();
+                if ((int)score_val % 40) {
+                    if (isDecrease) {
+                        if (score_val >= 80) boss1.m_changeTime -= 1.f;
+                        if (score_val >= 100) boss2.m_skillTime -= 1.f;
+                        isDecrease = false;
+                    }
+                }
+                else isDecrease = true;
+
+                score_text = std::to_string((int)score_val);
+                scoregame->setText("Score: " + score_text);
+                scoregame->LoadText(game_font, screen);
+
+                nofi_respawn->setText("Press R to respawn");
+                nofi_respawn->LoadText(game_font, screen);
+                nofi_respawn->setPos(player.getHitBox()->box.x - 30, player.getHitBox()->box.y - 20);
+                nofi_respawn->setSize(150, 15);
+
+                pause.Update(&event);
+                //Render
+                bkground.RenderBG(screen, &boss2);
+                scoregame->RenderText(screen);
+                player.renderPlayer(screen);
+                creepmanager.renderManyCreep(screen);
+                boss1.renderBoss1(screen);
+                bulletmanager.renderBullet(screen);
+                pause.RenderButton(screen);
+
+                if (player.getHitBox()->isAlive == false && player.getHitBox()->lives > 0) {
+                    nofi_respawn->RenderText(screen);
+                    nofi_respawn->setColor(colorkey[countcolor / 10]);
+                    countcolor += 2;
+                    if (countcolor > 80) countcolor = 0;
+                }
+                SDL_RenderPresent(screen);
+
+                if (1000 / FPS > deltaTime)
+                    SDL_Delay((1000 / FPS) - deltaTime);
+
+                if (player.getHitBox()->isAlive == false && player.getHitBox()->lives <= 0) {
+                    waitingtime -= deltaTime * 2;
+                    if (waitingtime < 0) {
+                        is_quit = true;
+                        for (int i = 0; i < 9; i++) {
+                            Mix_FreeChunk(playersound[i]);
+                        }
+                        Mix_FreeMusic(ingamemusic);
+                        delete nofi_respawn;
+                        delete scoregame;
+                    }
                 }
             }
-            std::cout << deltaTime << std::endl;
         }
         while (EndGame) {
-
             curTime = SDL_GetTicks();
             deltaTime = (float)(curTime - preTime) / 1000.f;
             preTime = curTime;
@@ -347,17 +409,19 @@ int main(int argc, char* argv[]) {
                     EndGame = false;
                     PlayAgain = false;
                 }
-                gEnd.Update(&event);
-                SDL_RenderClear(screen);
-                gEnd.RenderEnd(screen);
-                SDL_RenderPresent(screen);
-                if (defeatsoundplayed == false) {
-                    Mix_PlayChannel(-1, defeatsound, 0);
-                    defeatsoundplayed = true;
-                }
-                if (gEnd.again_btn->isTouch == true) EndGame = false;
-                if (gEnd.home_btn->isTouch == true) {
-                    inMenu = true;
+                if (!pausetohome) {
+                    gEnd.Update(&event);
+                    SDL_RenderClear(screen);
+                    gEnd.RenderEnd(screen);
+                    SDL_RenderPresent(screen);
+                    if (defeatsoundplayed == false) {
+                        Mix_PlayChannel(-1, defeatsound, 0);
+                        defeatsoundplayed = true;
+                    }
+                    if (gEnd.again_btn->isTouch == true) EndGame = false;
+                    if (gEnd.home_btn->isTouch == true) {
+                        inMenu = true;
+                    }
                 }
                 while (inMenu) {
                     curTime = SDL_GetTicks();
@@ -461,5 +525,6 @@ int main(int argc, char* argv[]) {
     close(window, screen);
     return 0;
 }
+
 
 

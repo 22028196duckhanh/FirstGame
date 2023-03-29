@@ -62,8 +62,3 @@ enum TAG {
 	BOSS_BULLET,
 	PROTECT
 };
-
-
-
-
-	

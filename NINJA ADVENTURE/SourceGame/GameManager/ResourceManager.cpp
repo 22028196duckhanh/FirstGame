@@ -2,21 +2,21 @@
 std::map<std::string, std::string> m_mapTexture;
 
 void InitResoucre() {
-	m_mapTexture["layer9"] = "DataGame//Textures//layer9.png";
-	m_mapTexture["layer8"] = "DataGame//Textures//layer8.png";
-	m_mapTexture["layer7"] = "DataGame//Textures//layer7.png";
-	m_mapTexture["layer6"] = "DataGame//Textures//layer6.png";
-	m_mapTexture["layer5"] = "DataGame//Textures//layer5.png";
-	m_mapTexture["layer4"] = "DataGame//Textures//layer4.png";
-	m_mapTexture["layer3"] = "DataGame//Textures//layer3.png";
-	m_mapTexture["layer2"] = "DataGame//Textures//layer2.png";
-	m_mapTexture["layer1"] = "DataGame//Textures//layer1.png";
+    m_mapTexture["layer9"] = "DataGame//Textures//layer9.png";
+    m_mapTexture["layer8"] = "DataGame//Textures//layer8.png";
+    m_mapTexture["layer7"] = "DataGame//Textures//layer7.png";
+    m_mapTexture["layer6"] = "DataGame//Textures//layer6.png";
+    m_mapTexture["layer5"] = "DataGame//Textures//layer5.png";
+    m_mapTexture["layer4"] = "DataGame//Textures//layer4.png";
+    m_mapTexture["layer3"] = "DataGame//Textures//layer3.png";
+    m_mapTexture["layer2"] = "DataGame//Textures//layer2.png";
+    m_mapTexture["layer1"] = "DataGame//Textures//layer1.png";
     m_mapTexture["Idle"] = "DataGame//Textures//Idle.png";
-	m_mapTexture["Run"] = "DataGame//Textures//Run.png";
-	m_mapTexture["Jump"] = "DataGame//Textures//Jump.png";
-	m_mapTexture["Fall"] = "DataGame//Textures//Fall.png";
-	m_mapTexture["Death"] = "DataGame//Textures//Death.png";
-	m_mapTexture["Attack"] = "DataGame//Textures//Attack.png";
+    m_mapTexture["Run"] = "DataGame//Textures//Run.png";
+    m_mapTexture["Jump"] = "DataGame//Textures//Jump.png";
+    m_mapTexture["Fall"] = "DataGame//Textures//Fall.png";
+    m_mapTexture["Death"] = "DataGame//Textures//Death.png";
+    m_mapTexture["Attack"] = "DataGame//Textures//Attack.png";
     m_mapTexture["RinoRun"] = "DataGame//Textures//RinoRun.png";
     m_mapTexture["RinoHit"] = "DataGame//Textures//RinoHit.png";
     m_mapTexture["BatFly"] = "DataGame//Textures//BatFly.png";
@@ -66,11 +66,12 @@ void InitResoucre() {
     m_mapTexture["Back"] = "DataGame//Textures//Back-sheet.png";
     m_mapTexture["Home"] = "DataGame//Textures//Home-sheet.png";
     m_mapTexture["Again"] = "DataGame//Textures//Again-sheet.png";
+    m_mapTexture["Pause"] = "DataGame//Textures//Pause-sheet.png";
     m_mapTexture["Bkgrend"] = "DataGame//Textures//bkgrend.png";
     m_mapTexture["gametitle"] = "DataGame//Textures//game_title.png";
     m_mapTexture["Bkgrmenu"] = "DataGame//Textures//background.png";
     m_mapTexture["Bkgr_template"] = "DataGame//Textures//bkgr_template.png";
-    m_mapTexture["character"]  = "DataGame//Textures//main_character.png";
+    m_mapTexture["character"] = "DataGame//Textures//main_character.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;
@@ -78,7 +79,7 @@ bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
         std::cout << "Init failed. Error: " << SDL_GetError() << std::endl;
         success = 0;
     }
-    window = SDL_CreateWindow(GAME_TITLE.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow(GAME_TITLE.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_INPUT_GRABBED);
     if (window == NULL) {
         std::cout << "Create window failed. Error: " << SDL_GetError() << std::endl;
         success = 0;
@@ -119,7 +120,7 @@ void close(SDL_Window*& window, SDL_Renderer*& screen) {
 }
 
 bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
-{       
+{
     int leftA = object1.x;
     int rightA = object1.x + object1.w;
     int topA = object1.y;
@@ -130,56 +131,56 @@ bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
     int topB = object2.y;
     int botB = object2.y + object2.h;
 
-        //xet A
-        if (leftA > leftB && leftA < rightB && topA > topB && topA < botB)
-        {
-                return true;
-        }
+    //xet A
+    if (leftA > leftB && leftA < rightB && topA > topB && topA < botB)
+    {
+        return true;
+    }
 
-        if (leftA > leftB && leftA < rightB && botA > topB && botA < botB)
-        {
-                return true;
-        }
+    if (leftA > leftB && leftA < rightB && botA > topB && botA < botB)
+    {
+        return true;
+    }
 
-        if (rightA > leftB && rightA < rightB&& topA > topB && topA < botB)
-        {
-                return true;
-        }
+    if (rightA > leftB && rightA < rightB && topA > topB && topA < botB)
+    {
+        return true;
+    }
 
-        if (rightA > leftB && rightA < rightB && botA > topB && botA < botB)
-        {
-                return true;
-        }
+    if (rightA > leftB && rightA < rightB && botA > topB && botA < botB)
+    {
+        return true;
+    }
 
-        //xet B
-        if (leftB > leftA && leftB < rightA && topB > topA && topB < botA)
-        {
-                return true;
-        }
+    //xet B
+    if (leftB > leftA && leftB < rightA && topB > topA && topB < botA)
+    {
+        return true;
+    }
 
-        if (leftB > leftA && leftB < rightA && botB > topA && botB < botA)
-        {
-                return true;
-        }
+    if (leftB > leftA && leftB < rightA && botB > topA && botB < botA)
+    {
+        return true;
+    }
 
-        if (rightB > leftA && rightB < rightA&& topB > topA && topB < botA)
-        {
-                return true;
+    if (rightB > leftA && rightB < rightA && topB > topA && topB < botA)
+    {
+        return true;
 
-        }
+    }
 
-        if (rightB > leftA && rightB < rightA&& botB > topA && botB < botA)
-        {
-                return true;         
-        }
+    if (rightB > leftA && rightB < rightA && botB > topA && botB < botA)
+    {
+        return true;
+    }
 
-        //size A = size B
-        if (topA == topB && rightA == rightB && botA == botB &&leftA==leftB)
-        {
-            return true;
-        }
+    //size A = size B
+    if (topA == topB && rightA == rightB && botA == botB && leftA == leftB)
+    {
+        return true;
+    }
 
-        return false;
+    return false;
 }
 
 

@@ -25,10 +25,6 @@ void Button::Init(SDL_Renderer* screen,std::string name,int tag)
     src[1] = { des.w,0,des.w,des.h };
     m_tag = tag;
     if (m_tag == PLAY) {des.h *= 2; des.w *= 2;}
-    /*if (m_tag == INFO) { des.x = (SCREEN_WIDTH - des.w) / 2 - des.w*2; des.y = (SCREEN_HEIGHT - des.h) / 2 +des.h * 1.5; }
-    if (m_tag == SETTING) { des.x = (SCREEN_WIDTH - des.w) / 2 - des.w*0.75 ; des.y = (SCREEN_HEIGHT - des.h) / 2 + des.h*1.5 ; }
-    if (m_tag == HIGHSCORE) { des.x = (SCREEN_WIDTH - des.w) / 2 + des.w*0.75 ; des.y = (SCREEN_HEIGHT - des.h) / 2 + des.h * 1.5; }
-    if (m_tag == EXIT) { des.x = (SCREEN_WIDTH - des.w) / 2 + des.w * 2; des.y = (SCREEN_HEIGHT - des.h) / 2 + des.h * 1.5; }*/
 }
 
 void Button::Update(SDL_Event* e)

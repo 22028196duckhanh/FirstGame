@@ -15,4 +15,5 @@ private:
 	int m_LAYERSPEED;
 	SDL_Rect m_rect1;
 	SDL_Rect m_rect2;
+	SDL_Rect m_rect3;
 };

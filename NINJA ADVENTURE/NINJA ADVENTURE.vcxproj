@@ -137,6 +137,7 @@
     <ClCompile Include="SourceGame\GameManager\GameHighScore.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameInfo.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameMenu.cpp" />
+    <ClCompile Include="SourceGame\GameManager\GamePause.cpp" />
     <ClCompile Include="SourceGame\GameManager\GameSetting.cpp" />
     <ClCompile Include="SourceGame\GameManager\ResourceManager.cpp" />
     <ClCompile Include="SourceGame\GameObject\Animation.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="SourceGame\GameManager\GameHighScore.h" />
     <ClInclude Include="SourceGame\GameManager\GameInfo.h" />
     <ClInclude Include="SourceGame\GameManager\GameMenu.h" />
+    <ClInclude Include="SourceGame\GameManager\GamePause.h" />
     <ClInclude Include="SourceGame\GameManager\GameSetting.h" />
     <ClInclude Include="SourceGame\GameManager\ResourceManager.h" />
     <ClInclude Include="SourceGame\GameObject\Animation.h" />
