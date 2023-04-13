@@ -8,6 +8,9 @@
 #include <string>
 #include <iostream>
 #include <ctime>
+#include <fstream>
+#include <stdio.h>
+#include <sstream>
 #include "../GameObject/Animation.h"
 #include "../GameObject/HitBox.h"
 #include "../GameObject/Text.h"
@@ -38,6 +41,8 @@ const SDL_Color WHITE_COLOR = { 255, 255, 255 };
 const SDL_Color BLACK_COLOR = { 0, 0, 0 };
 const SDL_Color GREEN_COLOR = { 0, 128, 0 };
 
+const int volume_unit = MIX_MAX_VOLUME / 7;
+
 static SDL_Color colorkey[10] = { CYAN_COLOR ,BLUE_COLOR,ORANGE_COLOR,YELLOW_COLOR,LIME_COLOR,PURPLE_COLOR,RED_COLOR,WHITE_COLOR,GREEN_COLOR };
 
 extern std::map<std::string, std::string> m_mapTexture;
@@ -48,6 +53,9 @@ bool initWorld(SDL_Window*& window, SDL_Renderer*& screen);
 void close(SDL_Window*& window, SDL_Renderer*& screen);
 
 bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2);
+
+int getHighScore(std::string path);
+void updateHighScore(std::string path, int score, std::string old_record);
 
 typedef struct {
 	float x;

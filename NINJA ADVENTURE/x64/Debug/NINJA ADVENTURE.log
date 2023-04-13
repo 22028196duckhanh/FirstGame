@@ -1,6 +1,1 @@
-﻿  main.cpp
-C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\main.cpp(387,44): warning C4244: 'argument': conversion from 'float' to 'Uint32', possible loss of data
-  Searching libraries
-      Searching C:\SDL_lib_VS\SDL2-2.26.3\lib\x64\SDL2.lib:
-  Finished searching libraries
-  NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe
+﻿  NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe

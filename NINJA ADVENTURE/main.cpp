@@ -16,6 +16,7 @@
 #include "SourceGame/GameManager/GamePause.h"
 
 int main(int argc, char* argv[]) {
+
     SDL_Window* window = NULL;
     SDL_Renderer* screen = NULL;
     SDL_Event event;
@@ -23,6 +24,7 @@ int main(int argc, char* argv[]) {
     Mix_Chunk* menumusic = NULL;
     Mix_Chunk* defeatsound = NULL;
     Mix_Music* ingamemusic = NULL;
+    Mix_Chunk* click_sound = NULL;
     GameMenu gMenu;
     GameEnd gEnd;
     GameInfo gInfo;
@@ -34,13 +36,15 @@ int main(int argc, char* argv[]) {
     game_font = TTF_OpenFont("DataGame//Fonts//font.ttf", 20);
     menumusic = Mix_LoadWAV("DataGame//Musics//menu_music.mp3");
     defeatsound = Mix_LoadWAV("DataGame//Musics//end_sound.mp3");
-    Mix_VolumeChunk(menumusic, 80);
-    Mix_VolumeChunk(defeatsound, 80);
+    click_sound = Mix_LoadWAV("DataGame//Musics//click_sound.mp3");
     gMenu.Init(screen, game_font);
     gEnd.Init(screen, game_font);
     gInfo.Init(screen, game_font);
     gSetting.Init(screen, game_font);
     gHighScore.Init(screen, game_font);
+    Mix_VolumeChunk(menumusic, volume_unit*gSetting.power);
+    Mix_VolumeChunk(defeatsound, volume_unit * gSetting.power);
+    Mix_VolumeChunk(click_sound, volume_unit * gSetting.power/3);
 
     Uint32 curTime = 0;
     Uint32 preTime = 0;
@@ -71,8 +75,9 @@ int main(int argc, char* argv[]) {
                 inInfo = false;
             }
             gMenu.Update(&event);
-            if (gMenu.play_btn->isTouch == true) { inMenu = false; Mix_Pause(1); }
+            if (gMenu.play_btn->isTouch == true) { inMenu = false; Mix_Pause(1); Mix_PlayChannel(-1, click_sound, 0); }
             if (gMenu.info_btn->isTouch == true) {
+                Mix_PlayChannel(-1, click_sound, 0);
                 inInfo = true;
                 while (inInfo) {
                     curTime = SDL_GetTicks();
@@ -97,6 +102,7 @@ int main(int argc, char* argv[]) {
                 }
             }
             if (gMenu.setting_btn->isTouch == true) {
+                Mix_PlayChannel(-1, click_sound, 0);
                 inSetting = true;
                 while (inSetting) {
                     curTime = SDL_GetTicks();
@@ -119,16 +125,20 @@ int main(int argc, char* argv[]) {
                         }
                     }
                 }
+                Mix_VolumeChunk(menumusic, volume_unit * gSetting.power);
+                Mix_VolumeChunk(defeatsound, volume_unit * gSetting.power);
+                Mix_VolumeChunk(click_sound, volume_unit * gSetting.power / 3);
             }
             if (gMenu.highscore_btn->isTouch == true) {
+                Mix_PlayChannel(-1, click_sound, 0);
                 inHighScore = true;
                 while (inHighScore) {
                     curTime = SDL_GetTicks();
                     deltaTime = (float)(curTime - preTime) / 1000.f;
                     preTime = curTime;
-                    gSetting.Update(&event);
+                    gHighScore.Update(&event,game_font,screen);
                     SDL_RenderClear(screen);
-                    gSetting.RenderSetting(screen);
+                    gHighScore.RenderHighScore(screen);
                     SDL_RenderPresent(screen);
                     while (SDL_PollEvent(&event)) {
                         if (event.type == SDL_QUIT) {
@@ -137,14 +147,14 @@ int main(int argc, char* argv[]) {
                             EndGame = false;
                             PlayAgain = false;
                         }
-                        gSetting.Update(&event);
-                        if (gSetting.back_btn->isTouch == true) {
+                        gHighScore.Update(&event, game_font, screen);
+                        if (gHighScore.back_btn->isTouch == true) {
                             inHighScore = false;
                         }
                     }
                 }
             }
-            if (gMenu.exit_btn->isTouch == true) { inMenu = false; PlayAgain = false; EndGame = false; }
+            if (gMenu.exit_btn->isTouch == true) { inMenu = false; PlayAgain = false; EndGame = false; Mix_PlayChannel(-1, click_sound, 0);}
             
         }
             if (menumusicplayed == false)
@@ -196,9 +206,9 @@ int main(int argc, char* argv[]) {
             Mix_LoadWAV("DataGame//Musics//death_is_like_a_wind.mp3"),
             Mix_LoadWAV("DataGame//Musics//Boss2SkillSound.mp3")
         };
-        Mix_VolumeMusic(60);
-        Mix_VolumeChunk(playersound[8], 14);
-        Mix_VolumeChunk(playersound[7], 100);
+        Mix_VolumeMusic(volume_unit* gSetting.power);
+        Mix_VolumeChunk(playersound[8], volume_unit* gSetting.power/6);
+        Mix_VolumeChunk(playersound[7], volume_unit* gSetting.power);
 
         interactObj.addObj(player.getHitBox());
         interactObj.addObj(boss1.getHitBox());
@@ -216,7 +226,7 @@ int main(int argc, char* argv[]) {
         float cooldownTime = 0.f;
         float spawnboss1time = 0.f;
         float spawnboss2time = 0.f;
-        float waitingtime = 8.f;
+        float waitingtime = 7.f;
         bool boss1spawn = false;
         float score_val = 0.f;
         bool death_sound = false;
@@ -283,7 +293,7 @@ int main(int argc, char* argv[]) {
                 //GamePause
                 if (pause.isTouch == true) {
                     inPause = true;
-                    Mix_PauseMusic();
+                    Mix_PauseMusic(); Mix_PlayChannel(-1, click_sound, 0);
                 }
                 while (inPause) {
                     curTime = SDL_GetTicks();
@@ -315,6 +325,7 @@ int main(int argc, char* argv[]) {
                             break;
                         }
                         if (gPause.home_btn->isTouch == true) {
+                            Mix_PlayChannel(-1, click_sound, 0);
                             inPause = false;
                             pausetohome = true;
                             is_quit = true;
@@ -410,7 +421,7 @@ int main(int argc, char* argv[]) {
                     PlayAgain = false;
                 }
                 if (!pausetohome) {
-                    gEnd.Update(&event);
+                    gEnd.Update(&event,screen,game_font,score_val);
                     SDL_RenderClear(screen);
                     gEnd.RenderEnd(screen);
                     SDL_RenderPresent(screen);
@@ -418,8 +429,9 @@ int main(int argc, char* argv[]) {
                         Mix_PlayChannel(-1, defeatsound, 0);
                         defeatsoundplayed = true;
                     }
-                    if (gEnd.again_btn->isTouch == true) EndGame = false;
+                    if (gEnd.again_btn->isTouch == true) { EndGame = false; Mix_PlayChannel(-1, click_sound, 0);}
                     if (gEnd.home_btn->isTouch == true) {
+                        Mix_PlayChannel(-1, click_sound, 0);
                         inMenu = true;
                     }
                 }
@@ -442,8 +454,10 @@ int main(int argc, char* argv[]) {
                         gMenu.Update(&event);
                         if (gMenu.play_btn->isTouch == true) {
                             inMenu = false; EndGame = false; Mix_Pause(1);
+                            Mix_PlayChannel(-1, click_sound, 0);
                         }
                         if (gMenu.info_btn->isTouch == true) {
+                            Mix_PlayChannel(-1, click_sound, 0);
                             inInfo = true;
                             while (inInfo) {
                                 curTime = SDL_GetTicks();
@@ -468,6 +482,7 @@ int main(int argc, char* argv[]) {
                             }
                         }
                         if (gMenu.setting_btn->isTouch == true) {
+                            Mix_PlayChannel(-1, click_sound, 0);
                             inSetting = true;
                             while (inSetting) {
                                 curTime = SDL_GetTicks();
@@ -490,16 +505,20 @@ int main(int argc, char* argv[]) {
                                     }
                                 }
                             }
+                            Mix_VolumeChunk(menumusic, volume_unit* gSetting.power);
+                            Mix_VolumeChunk(defeatsound, volume_unit* gSetting.power);
+                            Mix_VolumeChunk(click_sound, volume_unit* gSetting.power / 3);
                         }
                         if (gMenu.highscore_btn->isTouch == true) {
+                            Mix_PlayChannel(-1, click_sound, 0);
                             inHighScore = true;
                             while (inHighScore) {
                                 curTime = SDL_GetTicks();
                                 deltaTime = (float)(curTime - preTime) / 1000.f;
                                 preTime = curTime;
-                                gSetting.Update(&event);
+                                gHighScore.Update(&event,game_font,screen);
                                 SDL_RenderClear(screen);
-                                gSetting.RenderSetting(screen);
+                                gHighScore.RenderHighScore(screen);
                                 SDL_RenderPresent(screen);
                                 while (SDL_PollEvent(&event)) {
                                     if (event.type == SDL_QUIT) {
@@ -508,18 +527,20 @@ int main(int argc, char* argv[]) {
                                         EndGame = false;
                                         PlayAgain = false;
                                     }
-                                    gSetting.Update(&event);
-                                    if (gSetting.back_btn->isTouch == true) {
+                                    gHighScore.Update(&event, game_font, screen);
+                                    if (gHighScore.back_btn->isTouch == true) {
                                         inHighScore = false;
                                     }
                                 }
                             }
                         }
-                        if (gMenu.exit_btn->isTouch == true) { inMenu = false; PlayAgain = false; EndGame = false; }
+                        if (gMenu.exit_btn->isTouch == true) { inMenu = false; PlayAgain = false; EndGame = false; Mix_PlayChannel(-1, click_sound, 0);
+                        }
                     }
 
                 }
             }
+            updateHighScore("SourceGame//GameManager//record.txt", (int)score_val, std::to_string(getHighScore("SourceGame//GameManager//record.txt")));
         }
     }
     close(window, screen);

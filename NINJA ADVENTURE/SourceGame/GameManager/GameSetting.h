@@ -10,9 +10,12 @@ public:
 	void Update(SDL_Event* e);
 	void RenderSetting(SDL_Renderer* screen);
 	Button* back_btn;
+	int power;
 private:
 	SDL_Texture* m_texture;
 	SDL_Rect texture_pos;
-
-
+	SDL_Texture* volume;
+	std::vector<SDL_Rect> img;
+	
+	SDL_Rect pos;
 };

@@ -72,6 +72,7 @@ void InitResoucre() {
     m_mapTexture["Bkgrmenu"] = "DataGame//Textures//background.png";
     m_mapTexture["Bkgr_template"] = "DataGame//Textures//bkgr_template.png";
     m_mapTexture["character"] = "DataGame//Textures//main_character.png";
+    m_mapTexture["Volume"] = "DataGame//Textures//Volume.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;
@@ -182,6 +183,33 @@ bool checkCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 
     return false;
 }
+
+int getHighScore(std::string path)
+{
+    int tmp = 10;
+    std::fstream readFile;
+    readFile.open(path.c_str(), std::ios::in);
+    readFile >> tmp;
+    return tmp;
+}
+
+void updateHighScore(std::string path, int score, std::string old_record)
+{
+    int last_record = 0;
+    std::fstream highScoreFile;
+    std::string new_record;
+    highScoreFile.open(path, std::ios::out);
+    last_record = stoi(old_record);
+    if (score > last_record)
+    {
+        last_record = score;
+    }
+    new_record = std::to_string(last_record);
+
+    highScoreFile << new_record;
+}
+
+
 
 
 
