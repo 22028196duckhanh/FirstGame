@@ -3,8 +3,9 @@
 GameInfo::GameInfo()
 {
 	back_btn = new Button();
-	character_pos = { 75,50,0,0 };
+	character_pos = { 25,50,0,0 };
 	texture_pos = { 0,0,0,0 };
+	help_pos = { 250,150,700,200 };
 }
 
 GameInfo::~GameInfo()
@@ -17,6 +18,8 @@ void GameInfo::Init(SDL_Renderer* screen, TTF_Font* font)
 	SDL_QueryTexture(m_texture, NULL, NULL, &texture_pos.w, &texture_pos.h);
 	character = IMG_LoadTexture(screen, m_mapTexture["character"].c_str());
 	SDL_QueryTexture(character, NULL, NULL, &character_pos.w, &character_pos.h);
+	help = IMG_LoadTexture(screen, m_mapTexture["Help"].c_str());
+	//SDL_QueryTexture(character, NULL, NULL, &help_pos.w, &help_pos.h);
 	character_pos.w = character_pos.w * 2 / 3;
 	character_pos.h = character_pos.h * 2 / 3;
 	back_btn->Init(screen, "Back", 7);
@@ -32,5 +35,6 @@ void GameInfo::RenderInfo(SDL_Renderer* screen)
 {
 	SDL_RenderCopy(screen, m_texture, NULL, &texture_pos);
 	SDL_RenderCopy(screen, character, NULL, &character_pos);
+	SDL_RenderCopy(screen, help, NULL, &help_pos);
 	back_btn->RenderButton(screen);
 }

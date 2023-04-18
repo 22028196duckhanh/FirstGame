@@ -21,7 +21,7 @@ Player::Player()
     m_hitBox->isAlive = true;
     m_hitBox->haveProtect = false;
     m_hitBox->box = { 0,0,30,50 };
-    m_hitBox->lives = 1;
+    m_hitBox->lives = 6;
     skillslot = { 0, 50, 64,64 };
     liveslot = { 0,0,144, 48 };
     protectTime = PROTECTTIME;

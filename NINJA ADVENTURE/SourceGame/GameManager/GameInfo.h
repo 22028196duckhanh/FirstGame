@@ -15,5 +15,6 @@ private:
 	SDL_Rect texture_pos;
 	SDL_Texture* character;
 	SDL_Rect character_pos;
-	
+	SDL_Texture* help;
+	SDL_Rect help_pos;
 };

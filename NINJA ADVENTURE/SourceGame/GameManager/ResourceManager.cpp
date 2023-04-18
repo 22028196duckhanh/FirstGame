@@ -66,6 +66,7 @@ void InitResoucre() {
     m_mapTexture["Back"] = "DataGame//Textures//Back-sheet.png";
     m_mapTexture["Home"] = "DataGame//Textures//Home-sheet.png";
     m_mapTexture["Again"] = "DataGame//Textures//Again-sheet.png";
+    m_mapTexture["Resume"] = "DataGame//Textures//Resume-sheet.png";
     m_mapTexture["Pause"] = "DataGame//Textures//Pause-sheet.png";
     m_mapTexture["Bkgrend"] = "DataGame//Textures//bkgrend.png";
     m_mapTexture["gametitle"] = "DataGame//Textures//game_title.png";
@@ -73,6 +74,9 @@ void InitResoucre() {
     m_mapTexture["Bkgr_template"] = "DataGame//Textures//bkgr_template.png";
     m_mapTexture["character"] = "DataGame//Textures//main_character.png";
     m_mapTexture["Volume"] = "DataGame//Textures//Volume.png";
+    m_mapTexture["Help"] = "DataGame//Textures//help.png";
+    m_mapTexture["Tutorial"] = "DataGame//Textures//Tutorial-sheet.png";
+    m_mapTexture["Trick"] = "DataGame//Textures//trick.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;

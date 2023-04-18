@@ -45,7 +45,7 @@ void GameEnd::Update(SDL_Event* e, SDL_Renderer* screen, TTF_Font* font,const in
 	score->setText("Your score: " + cur_score);
 	score->LoadText(font, screen);
 	score->setPos(SCREEN_WIDTH *2 / 3, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 12);
-	newrecord->setText("Congratulation.You've got a new record!!");
+	newrecord->setText("Congratulations.You've got a new record!!");
 	newrecord->LoadText(font, screen);
 	newrecord->setPos(SCREEN_WIDTH / 2 - SCREEN_WIDTH / 3, SCREEN_HEIGHT / 2 - SCREEN_HEIGHT / 6);
 	if (score_val >= getHighScore("SourceGame//GameManager//record.txt")) nofi_new = true;

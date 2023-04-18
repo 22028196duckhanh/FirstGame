@@ -44,7 +44,7 @@ int main(int argc, char* argv[]) {
     gHighScore.Init(screen, game_font);
     Mix_VolumeChunk(menumusic, volume_unit*gSetting.power);
     Mix_VolumeChunk(defeatsound, volume_unit * gSetting.power);
-    Mix_VolumeChunk(click_sound, volume_unit * gSetting.power/3);
+    Mix_VolumeChunk(click_sound, volume_unit * gSetting.power/2);
 
     Uint32 curTime = 0;
     Uint32 preTime = 0;
@@ -167,7 +167,6 @@ int main(int argc, char* argv[]) {
             gMenu.RenderMenu(screen);
             SDL_Delay(25);
             SDL_RenderPresent(screen);
-        
     }
     //GamePlay
     while (PlayAgain) {
@@ -181,7 +180,10 @@ int main(int argc, char* argv[]) {
         Boss2 boss2;
         BulletManager bulletmanager;
         Button pause;
+        Button tutorial;
         GamePause gPause;
+        SDL_Texture* trick;
+        SDL_Rect pos_trick;
 
         //Init
         bkground.Init(screen);
@@ -193,6 +195,12 @@ int main(int argc, char* argv[]) {
         gPause.Init(screen, game_font);
         pause.Init(screen, "Pause", 0);
         pause.setPos(SCREEN_WIDTH - 76,0);
+        tutorial.Init(screen, "Tutorial", 0);
+        tutorial.setPos(SCREEN_WIDTH - 76 * 2, 0);
+        trick = IMG_LoadTexture(screen, m_mapTexture["Trick"].c_str());
+        SDL_QueryTexture(trick, NULL, NULL, &pos_trick.w, &pos_trick.h);    pos_trick.w /= 2; pos_trick.h /= 2;
+        pos_trick.x = SCREEN_WIDTH - 120 - pos_trick.w;
+        pos_trick.y = 20;
 
         ingamemusic = Mix_LoadMUS("DataGame//Musics//Victory.mp3");
         Mix_Chunk* playersound[9] = {
@@ -252,10 +260,10 @@ int main(int argc, char* argv[]) {
             {
                 boss1spawn = true; spawnboss1time = 0;
             }
-
             if (spawnboss2time < BOSS2SPAWNTIME && boss2.boss2spawn == false && player.getHitBox()->isAlive == true) spawnboss2time += deltaTime;
             else if (spawnboss2time < BOSS2SPAWNTIME && boss2.boss2spawn == false && player.getHitBox()->isAlive == false) spawnboss2time += 0;
             else { boss2.boss2spawn = true; spawnboss2time = 0; }
+
             // diem tang theo thoi gian
             if (player.getHitBox()->isAlive == true) score_val += deltaTime;
             //am thanh va cham
@@ -271,7 +279,6 @@ int main(int argc, char* argv[]) {
             }
             if (player.getHitBox()->isAlive == false && Mix_PausedMusic() == 0) Mix_PauseMusic();
             if (player.getHitBox()->isAlive == true && Mix_PausedMusic() == 1) Mix_ResumeMusic();
-
             while (SDL_PollEvent(&event)) {
                 if (event.type == SDL_QUIT) {
                     is_quit = true;
@@ -290,6 +297,7 @@ int main(int argc, char* argv[]) {
                     }
                 }
                 pause.Update(&event);
+                tutorial.Update(&event);
                 //GamePause
                 if (pause.isTouch == true) {
                     inPause = true;
@@ -308,6 +316,8 @@ int main(int argc, char* argv[]) {
                     boss1.renderBoss1(screen);
                     bulletmanager.renderBullet(screen);
                     gPause.RenderPause(screen);
+                    tutorial.RenderButton(screen);
+                    if (tutorial.inside == true) SDL_RenderCopy(screen, trick, NULL, &pos_trick);
                     SDL_RenderPresent(screen);
                     while (SDL_PollEvent(&event)) {
                         if (event.type == SDL_QUIT) {
@@ -319,6 +329,7 @@ int main(int argc, char* argv[]) {
                             break;
                         }
                         gPause.Update(&event);
+                        tutorial.Update(&event);
                         if (gPause.resume_btn->isTouch == true) {
                             inPause = false;
                             Mix_ResumeMusic();
@@ -377,6 +388,8 @@ int main(int argc, char* argv[]) {
                 nofi_respawn->setSize(150, 15);
 
                 pause.Update(&event);
+                tutorial.Update(&event);
+                if (tutorial.inside == true) SDL_RenderCopy(screen, trick, NULL, &pos_trick);
                 //Render
                 bkground.RenderBG(screen, &boss2);
                 scoregame->RenderText(screen);
@@ -385,6 +398,8 @@ int main(int argc, char* argv[]) {
                 boss1.renderBoss1(screen);
                 bulletmanager.renderBullet(screen);
                 pause.RenderButton(screen);
+                tutorial.RenderButton(screen);
+                if (tutorial.inside == true) SDL_RenderCopy(screen, trick, NULL, &pos_trick);
 
                 if (player.getHitBox()->isAlive == false && player.getHitBox()->lives > 0) {
                     nofi_respawn->RenderText(screen);
