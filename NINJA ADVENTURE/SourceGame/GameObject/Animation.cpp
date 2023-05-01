@@ -53,8 +53,7 @@ void Animation::Init(std::string name, int frameNumx, int frameNumy, SDL_Rendere
 	m_Num = frameNumx * frameNumy;
 	frame_clip.resize(m_Num);
 	m_rectSize.first = 0;
-	m_rectSize.second = 0;
-	
+	m_rectSize.second = 0;	
 	CalculateSize(m_width, m_height);
 	setClips();
 }

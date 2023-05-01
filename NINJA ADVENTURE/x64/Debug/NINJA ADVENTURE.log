@@ -1,1 +1,6 @@
-﻿  NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe
+﻿  ResourceManager.cpp
+C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\SourceGame\GameManager\ResourceManager.cpp(121,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Searching libraries
+      Searching C:\SDL_lib_VS\SDL2-2.26.3\lib\x64\SDL2.lib:
+  Finished searching libraries
+  NINJA ADVENTURE.vcxproj -> C:\GAME_PROJECT\FirstGame\NINJA ADVENTURE\x64\Debug\NINJA ADVENTURE.exe

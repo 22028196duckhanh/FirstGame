@@ -30,9 +30,6 @@ void Collision::Update()
 				a->lives -= 2;
 				if (a->lives < 0) a->lives = 0;
 			}
-			/*if (a->tag == CREEP && b->tag == BOSS) {
-				a->isAlive = false;
-			}*/
 			if (a->tag == PLAYER && b->tag == BOSS_BULLET) {
 				a->isAlive = false;
 				b->isAlive = false;
@@ -47,10 +44,6 @@ void Collision::Update()
 			if (a->tag == PROTECT && (b->tag == CREEP || b->tag == BOSS_BULLET)) {
 				b->isAlive = false;
 			}
-			/*if (a->tag == CREEP && b->tag == BOSS_BULLET) {
-				a->isAlive = false;
-				b->isAlive = false;
-			}*/
 		}
 	}
 }

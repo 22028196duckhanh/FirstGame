@@ -22,4 +22,5 @@ private:
 	std::string cur_score;
 	Text* score;
 	Text* newrecord;
+	SDL_Color random[4];
 };

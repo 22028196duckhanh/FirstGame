@@ -77,6 +77,8 @@ void InitResoucre() {
     m_mapTexture["Help"] = "DataGame//Textures//help.png";
     m_mapTexture["Tutorial"] = "DataGame//Textures//Tutorial-sheet.png";
     m_mapTexture["Trick"] = "DataGame//Textures//trick.png";
+    m_mapTexture["Decrease"] = "DataGame//Textures//decrease-sheet.png";
+    m_mapTexture["Increase"] = "DataGame//Textures//increase-sheet.png";
 }
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
     bool success = true;
@@ -113,6 +115,9 @@ bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
         std::cout << "Init font failed. Error: " << SDL_GetError() << std::endl;
         success = 0;
     }
+    SDL_Surface* icon = IMG_Load("DataGame//Textures//icon.png");
+    SDL_SetWindowIcon(window, icon);
+    SDL_FreeSurface(icon);
     srand(time(0));
     return success;
 }

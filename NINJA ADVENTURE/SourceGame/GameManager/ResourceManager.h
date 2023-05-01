@@ -46,7 +46,6 @@ const int volume_unit = MIX_MAX_VOLUME / 7;
 static SDL_Color colorkey[10] = { CYAN_COLOR ,BLUE_COLOR,ORANGE_COLOR,YELLOW_COLOR,LIME_COLOR,PURPLE_COLOR,RED_COLOR,WHITE_COLOR,GREEN_COLOR };
 
 extern std::map<std::string, std::string> m_mapTexture;
-//extern std::map<std::string, std::string> m_mapSound;
 
 void InitResoucre();
 bool initWorld(SDL_Window*& window, SDL_Renderer*& screen);

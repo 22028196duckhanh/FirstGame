@@ -12,7 +12,4 @@ public:
 	Button* resume_btn;
 	Button* home_btn;
 private:
-	//SDL_Texture* m_texture;
-	//SDL_Rect texture_pos;
-
 };

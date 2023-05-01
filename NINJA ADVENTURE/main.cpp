@@ -20,28 +20,30 @@ int main(int argc, char* argv[]) {
     SDL_Window* window = NULL;
     SDL_Renderer* screen = NULL;
     SDL_Event event;
-    TTF_Font* game_font = NULL;
-    Mix_Chunk* menumusic = NULL;
-    Mix_Chunk* defeatsound = NULL;
-    Mix_Music* ingamemusic = NULL;
-    Mix_Chunk* click_sound = NULL;
     GameMenu gMenu;
     GameEnd gEnd;
     GameInfo gInfo;
     GameSetting gSetting;
     GameHighScore gHighScore;
+    TTF_Font* game_font = NULL;
+    Mix_Chunk* menumusic = NULL;
+    Mix_Chunk* defeatsound = NULL;
+    Mix_Music* ingamemusic = NULL;
+    Mix_Chunk* click_sound = NULL;
+    
 
     initWorld(window, screen);
     InitResoucre();
     game_font = TTF_OpenFont("DataGame//Fonts//font.ttf", 20);
-    menumusic = Mix_LoadWAV("DataGame//Musics//menu_music.mp3");
-    defeatsound = Mix_LoadWAV("DataGame//Musics//end_sound.mp3");
-    click_sound = Mix_LoadWAV("DataGame//Musics//click_sound.mp3");
     gMenu.Init(screen, game_font);
     gEnd.Init(screen, game_font);
     gInfo.Init(screen, game_font);
     gSetting.Init(screen, game_font);
     gHighScore.Init(screen, game_font);
+    
+    menumusic = Mix_LoadWAV("DataGame//Musics//menu_music.mp3");
+    defeatsound = Mix_LoadWAV("DataGame//Musics//end_sound.mp3");
+    click_sound = Mix_LoadWAV("DataGame//Musics//click_sound.mp3");   
     Mix_VolumeChunk(menumusic, volume_unit*gSetting.power);
     Mix_VolumeChunk(defeatsound, volume_unit * gSetting.power);
     Mix_VolumeChunk(click_sound, volume_unit * gSetting.power/2);
@@ -50,13 +52,13 @@ int main(int argc, char* argv[]) {
     Uint32 preTime = 0;
     float deltaTime = 0.f;
 
-    bool inMenu = true;
-    bool PlayAgain = true;
-    bool EndGame = true;
+    bool inMenu = true;    
     bool inInfo = true;
-    bool inSetting = true;
-    bool inHighScore = true;
+    bool EndGame = true;
     bool inPause = true;
+    bool PlayAgain = true;    
+    bool inSetting = true;
+    bool inHighScore = true;    
     bool pausetohome = true;
     bool menumusicplayed = false;
     bool defeatsoundplayed = false;
@@ -123,11 +125,10 @@ int main(int argc, char* argv[]) {
                         if (gSetting.back_btn->isTouch == true) {
                             inSetting = false;
                         }
+                        Mix_VolumeChunk(menumusic, volume_unit * gSetting.power);
+                        Mix_VolumeChunk(click_sound, volume_unit * gSetting.power / 3);
                     }
                 }
-                Mix_VolumeChunk(menumusic, volume_unit * gSetting.power);
-                Mix_VolumeChunk(defeatsound, volume_unit * gSetting.power);
-                Mix_VolumeChunk(click_sound, volume_unit * gSetting.power / 3);
             }
             if (gMenu.highscore_btn->isTouch == true) {
                 Mix_PlayChannel(-1, click_sound, 0);
