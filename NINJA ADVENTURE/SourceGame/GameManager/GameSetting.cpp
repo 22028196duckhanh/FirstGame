@@ -7,7 +7,7 @@ GameSetting::GameSetting()
 	decrease = new Button();
 	img.resize(8);
 	texture_pos = { 0,0,0,0 };
-	power = 4;
+	power = 3;
 	pos = { 200,200,0,0 };
 }
 

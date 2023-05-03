@@ -12,7 +12,7 @@ GameEnd::GameEnd()
 	texture_pos = { 0,0,0,0 };
 	nofi->setColor(RED_COLOR);
 	nofi_new = false;
-	random[0] = CYAN_COLOR;
+	random[0] = ORANGE_COLOR;
 	random[1] = RED_COLOR;
 	random[2] = YELLOW_COLOR;
 	random[3] = PURPLE_COLOR;

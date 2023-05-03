@@ -115,7 +115,7 @@ bool initWorld(SDL_Window*& window, SDL_Renderer*& screen) {
         std::cout << "Init font failed. Error: " << SDL_GetError() << std::endl;
         success = 0;
     }
-    SDL_Surface* icon = IMG_Load("DataGame//Textures//icon.png");
+    SDL_Surface* icon = IMG_Load("DataGame//Textures//icon2.png");
     SDL_SetWindowIcon(window, icon);
     SDL_FreeSurface(icon);
     srand(time(0));
